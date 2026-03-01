@@ -7,6 +7,8 @@ const services = [
   { icon:"🎨", name:"UI / UX Redesign",     desc:"We take ugly, confusing interfaces and transform them into clean, intuitive experiences your users will actually enjoy.",                 tags:["Figma","Design Systems","Prototyping"] },
   { icon:"🤖", name:"AI Integration",       desc:"Embed AI into your product — from smart automation to LLM-powered features, we integrate intelligence that adds real value.",            tags:["OpenAI","LangChain","RAG","Automation"] },
   { icon:"🔧", name:"Maintenance & Support",desc:"We stay with you after launch. Bug fixes, performance upgrades, feature additions — your product keeps improving, not stagnating.", tags:["24hr Response","Monitoring","Updates"] },
+  { icon:"🛒", name:"E-commerce Solutions",  desc:"Custom online stores and payment systems built to convert. From product catalogs to checkout flows, we make buying effortless.",       tags:["Shopify","Stripe","Inventory","Payments"] },
+  { icon:"☁️", name:"DevOps & Cloud",         desc:"CI/CD pipelines, container orchestration, and cloud infrastructure — so your deploys are fast, safe, and fully automated.",              tags:["Docker","GitHub Actions","Vercel","AWS"] },
 ];
 
 const Services = () => (
