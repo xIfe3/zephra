@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS — Software Development Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <!-- CURSOR -->
+
+
+  <!-- NAV -->
+
+
+  <!-- HERO -->
+
+
+  <!-- SERVICES -->
+
+
+  <!-- PROCESS -->
+
+
+  <!-- PORTFOLIO -->
+
+
+  <!-- WHY US -->
+
+
+  <!-- TESTIMONIALS -->
+
+
+  <!-- ABOUT -->
+
+
+  <!-- CTA BAND -->
+
+
+  <!-- CONTACT -->
+
+
+  <!-- FOOTER -->
+
+
+  <script>
+    // CURSOR
+
+
+    // NAV SCROLL
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // SCROLL REVEAL
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // FORM SUBMIT
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = 'rgba(0,245,160,.3)';
+      btn.style.color = 'var(--accent)';
+      btn.style.border = '1px solid rgba(0,245,160,.4)';
+      btn.style.boxShadow = 'none';
+      setTimeout(() => {
+        btn.innerHTML = 'Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>';
+        btn.style = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>
