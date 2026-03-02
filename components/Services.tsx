@@ -2,8 +2,8 @@
 
 const services = [
   { icon:"🌐", name:"Web Development",     desc:"High-performance websites and web apps built with modern frameworks. Fast, responsive, and conversion-focused from day one.",             tags:["Next.js","React","TypeScript","SEO"] },
-  { icon:"⚙️", name:"Backend & APIs",       desc:"Scalable server-side systems, RESTful and GraphQL APIs, database architecture, and cloud infrastructure that grows with you.",          tags:["Node.js","PostgreSQL","AWS","Redis"] },
-  { icon:"📱", name:"Mobile Apps",          desc:"Cross-platform mobile applications for iOS and Android that feel native, load fast, and keep users coming back.",                        tags:["React Native","Expo","iOS","Android"] },
+  { icon:"⚙️", name:"Backend & APIs",       desc:"Scalable server-side systems, RESTful and GraphQL APIs, database architecture, and cloud infrastructure that grows with you.",          tags:["Node.js","NestJS","PostgreSQL","AWS"] },
+  { icon:"📱", name:"Mobile Apps",          desc:"Cross-platform mobile applications for iOS and Android that feel native, load fast, and keep users coming back.",                        tags:["React Native","Flutter","iOS","Android"] },
   { icon:"🎨", name:"UI / UX Redesign",     desc:"We take ugly, confusing interfaces and transform them into clean, intuitive experiences your users will actually enjoy.",                 tags:["Figma","Design Systems","Prototyping"] },
   { icon:"🤖", name:"AI Integration",       desc:"Embed AI into your product — from smart automation to LLM-powered features, we integrate intelligence that adds real value.",            tags:["OpenAI","LangChain","RAG","Automation"] },
   { icon:"🔧", name:"Maintenance & Support",desc:"We stay with you after launch. Bug fixes, performance upgrades, feature additions — your product keeps improving, not stagnating.", tags:["24hr Response","Monitoring","Updates"] },
