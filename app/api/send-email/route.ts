@@ -1,8 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function buildEmailHtml(name: string, email: string, message: string) {
   const escapedMessage = message
     .replace(/&/g, "&amp;")
@@ -99,6 +97,7 @@ function buildEmailHtml(name: string, email: string, message: string) {
 }
 
 export async function POST(req: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const { name, email, message } = await req.json();
 
