@@ -53,33 +53,10 @@ const Header = () => {
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 8,
           textDecoration: "none",
-          color: "#f0f0f8",
         }}
-        className="font-syne"
       >
-        <div
-          className="anim-pulse"
-          style={{
-            width: 8,
-            height: 8,
-            borderRadius: "50%",
-            background: "#00f5a0",
-            boxShadow: "0 0 12px #00f5a0",
-            flexShrink: 0,
-          }}
-        />
-        <span
-          className="font-syne"
-          style={{
-            fontWeight: 800,
-            fontSize: "1.25rem",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          ZEPHRA
-        </span>
+        <img src="/zephra logo light.png" alt="Zephra" className="w-36" />
       </a>
 
       {/* Nav links — hidden on mobile */}
@@ -99,7 +76,7 @@ const Header = () => {
       {/* CTA */}
       <button
         style={{
-          background: "#00f5a0",
+          background: "#00e5ff",
           color: "#020906",
           border: "none",
           padding: "0.6rem 1.5rem",
@@ -113,7 +90,7 @@ const Header = () => {
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLElement).style.boxShadow =
-            "0 0 32px rgba(0,245,160,0.45)";
+            "0 0 32px rgba(0,229,255,0.45)";
           (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
         }}
         onMouseLeave={(e) => {

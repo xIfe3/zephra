@@ -6,9 +6,9 @@
 ───────────────────────────────────────────── */
 .bg-bg          { background-color: #050508; }
 .bg-bg2         { background-color: #0a0a12; }
-.text-accent    { color: #00f5a0; }
-.bg-accent      { background-color: #00f5a0; }
-.border-accent  { border-color: #00f5a0; }
+.text-accent    { color: #00e5ff; }
+.bg-accent      { background-color: #00e5ff; }
+.border-accent  { border-color: #00e5ff; }
 .text-accent2   { color: #00c8ff; }
 .bg-accent2     { background-color: #00c8ff; }
 .bg-accent3     { background-color: #7b5ea7; }
@@ -22,7 +22,7 @@
   gap: 8px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #00f5a0;
+  color: #00e5ff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
@@ -32,7 +32,7 @@
   display: block;
   width: 20px;
   height: 1px;
-  background: #00f5a0;
+  background: #00e5ff;
   flex-shrink: 0;
 }
 
@@ -67,28 +67,28 @@ body::before {
 ───────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #050508; }
-::-webkit-scrollbar-thumb { background: #00f5a0; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #00e5ff; border-radius: 2px; }
 
 /* ─────────────────────────────────────────────
    CURSOR
 ───────────────────────────────────────────── */
 .cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
 .cursor-dot {
-  width: 8px; height: 8px; background: #00f5a0; border-radius: 50%;
+  width: 8px; height: 8px; background: #00e5ff; border-radius: 50%;
   position: absolute; transform: translate(-50%, -50%);
   transition: width .2s, height .2s;
 }
 .cursor-ring {
   width: 36px; height: 36px;
-  border: 1.5px solid rgba(0,245,160,0.4); border-radius: 50%;
+  border: 1.5px solid rgba(0,229,255,0.4); border-radius: 50%;
   position: absolute; transform: translate(-50%, -50%);
   transition: width .35s ease, height .35s ease;
 }
 body:has(a:hover) .cursor-ring,
 body:has(button:hover) .cursor-ring {
   width: 56px; height: 56px;
-  border-color: #00f5a0;
-  background: rgba(0,245,160,0.06);
+  border-color: #00e5ff;
+  background: rgba(0,229,255,0.06);
 }
 
 /* ─────────────────────────────────────────────
@@ -142,7 +142,7 @@ body:has(button:hover) .cursor-ring {
    GRADIENT TEXT
 ───────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(90deg, #00f5a0, #00c8ff);
+  background: linear-gradient(90deg, #00e5ff, #00c8ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -160,16 +160,16 @@ body:has(button:hover) .cursor-ring {
 .grid-bg {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(0,245,160,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,245,160,.03) 1px, transparent 1px);
+    linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
 }
 .decor-grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(0,245,160,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,245,160,.04) 1px, transparent 1px);
+    linear-gradient(rgba(0,229,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,.04) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
@@ -180,12 +180,12 @@ body:has(button:hover) .cursor-ring {
 ───────────────────────────────────────────── */
 .service-card .card-shine {
   position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, #00f5a0, transparent);
+  background: linear-gradient(90deg, transparent, #00e5ff, transparent);
   transform: scaleX(0); transform-origin: center;
   transition: transform 0.4s ease;
 }
 .service-card:hover .card-shine  { transform: scaleX(1); }
-.service-card:hover               { background: rgba(0,245,160,.03); }
+.service-card:hover               { background: rgba(0,229,255,.03); }
 
 /* ─────────────────────────────────────────────
    NAV
@@ -203,7 +203,7 @@ body:has(button:hover) .cursor-ring {
 .nav-link::after {
   content: '';
   position: absolute; bottom: -4px; left: 0; right: 0;
-  height: 1px; background: #00f5a0;
+  height: 1px; background: #00e5ff;
   transform: scaleX(0); transform-origin: left;
   transition: transform 0.3s;
 }
@@ -215,7 +215,7 @@ body:has(button:hover) .cursor-ring {
 ───────────────────────────────────────────── */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #00f5a0; color: #020906;
+  background: #00e5ff; color: #020906;
   text-decoration: none;
   padding: 0.875rem 2.25rem;
   border-radius: 100px;
@@ -224,7 +224,7 @@ body:has(button:hover) .cursor-ring {
   border: none; cursor: none;
   transition: box-shadow 0.3s, transform 0.2s;
 }
-.btn-primary:hover { box-shadow: 0 0 48px rgba(0,245,160,.5); transform: translateY(-2px); }
+.btn-primary:hover { box-shadow: 0 0 48px rgba(0,229,255,.5); transform: translateY(-2px); }
 
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 8px;
@@ -247,7 +247,7 @@ body:has(button:hover) .cursor-ring {
   border: 1px solid rgba(255,255,255,0.08);
   transition: border-color 0.3s;
 }
-.card-border:hover { border-color: rgba(0,245,160,0.25); }
+.card-border:hover { border-color: rgba(0,229,255,0.25); }
 
 /* ─────────────────────────────────────────────
    FORM INPUTS
@@ -265,7 +265,7 @@ body:has(button:hover) .cursor-ring {
   transition: border-color 0.3s, background 0.3s;
 }
 .form-input:focus {
-  border-color: rgba(0,245,160,.5);
-  background: rgba(0,245,160,.03);
+  border-color: rgba(0,229,255,.5);
+  background: rgba(0,229,255,.03);
 }
 .form-input::placeholder { color: rgba(240,240,248,0.25); }

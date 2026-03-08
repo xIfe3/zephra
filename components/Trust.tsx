@@ -34,7 +34,7 @@ const Trust = () => (
         gap: 0.35rem;
         transition: background 0.3s;
       }
-      .stat-cell:hover { background: rgba(0,245,160,0.03); }
+      .stat-cell:hover { background: rgba(0,229,255,0.03); }
       .marquee-track {
         display: flex;
         gap: 0;
@@ -67,7 +67,7 @@ const Trust = () => (
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background: #00f5a0;
+        background: #00e5ff;
         opacity: 0.6;
         flex-shrink: 0;
       }
@@ -111,7 +111,7 @@ const Trust = () => (
               fontSize: "clamp(2.4rem,5vw,3.5rem)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
-              color: "#00f5a0",
+              color: "#00e5ff",
               lineHeight: 1,
             }}
           >

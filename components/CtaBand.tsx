@@ -8,7 +8,7 @@ const CtaBand = () => {
 
   return (
     <>
-      <section id="cta-band" style={{ padding:"6rem 5%", position:"relative", textAlign:"center", background:"linear-gradient(135deg, rgba(0,245,160,.08), rgba(0,200,255,.04))", borderTop:"1px solid rgba(255,255,255,0.08)", borderBottom:"1px solid rgba(255,255,255,0.08)" }}>
+      <section id="cta-band" style={{ padding:"6rem 5%", position:"relative", textAlign:"center", background:"linear-gradient(135deg, rgba(0,229,255,.08), rgba(0,200,255,.04))", borderTop:"1px solid rgba(255,255,255,0.08)", borderBottom:"1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-label reveal" style={{ justifyContent:"center" }}>Let&apos;s Build Something</div>
         <h2 className="font-syne reveal reveal-delay-1" style={{ fontWeight:800, fontSize:"clamp(2.5rem,5vw,4rem)", lineHeight:1.05, letterSpacing:"-0.04em", color:"#f0f0f8", marginBottom:"1rem" }}>
           Your Idea Deserves<br />

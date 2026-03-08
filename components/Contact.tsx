@@ -30,7 +30,7 @@ const Contact = () => {
     const orig = btn.innerHTML;
     btn.textContent = "✓ Message Sent!";
     btn.style.cssText =
-      "background:rgba(0,245,160,.25);color:#00f5a0;border:1px solid rgba(0,245,160,.35);padding:0.875rem 2.25rem;border-radius:100px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:none;";
+      "background:rgba(0,229,255,.25);color:#00e5ff;border:1px solid rgba(0,229,255,.35);padding:0.875rem 2.25rem;border-radius:100px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;cursor:none;";
     setTimeout(() => {
       btn.innerHTML = orig;
       btn.style.cssText = "";
@@ -43,8 +43,8 @@ const Contact = () => {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-    e.target.style.borderColor = "rgba(0,245,160,.5)";
-    e.target.style.background = "rgba(0,245,160,.03)";
+    e.target.style.borderColor = "rgba(0,229,255,.5)";
+    e.target.style.background = "rgba(0,229,255,.03)";
   };
   const focusOut = (
     e: React.FocusEvent<
@@ -115,8 +115,8 @@ const Contact = () => {
                   width: 44,
                   height: 44,
                   borderRadius: 12,
-                  background: "rgba(0,245,160,.08)",
-                  border: "1px solid rgba(0,245,160,.15)",
+                  background: "rgba(0,229,255,.08)",
+                  border: "1px solid rgba(0,229,255,.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -154,8 +154,8 @@ const Contact = () => {
             style={{
               marginTop: "2rem",
               padding: "1.5rem",
-              background: "rgba(0,245,160,.05)",
-              border: "1px solid rgba(0,245,160,.15)",
+              background: "rgba(0,229,255,.05)",
+              border: "1px solid rgba(0,229,255,.15)",
               borderRadius: 16,
             }}
           >
@@ -164,7 +164,7 @@ const Contact = () => {
                 fontSize: "0.78rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.06em",
-                color: "#00f5a0",
+                color: "#00e5ff",
                 marginBottom: "0.5rem",
               }}
             >

@@ -31,8 +31,8 @@ const Process = () => (
             onMouseEnter={e => {
               const num = e.currentTarget.querySelector(".step-num") as HTMLElement;
               const title = e.currentTarget.querySelector(".step-title") as HTMLElement;
-              if (num) num.style.color = "rgba(0,245,160,.25)";
-              if (title) title.style.color = "#00f5a0";
+              if (num) num.style.color = "rgba(0,229,255,.25)";
+              if (title) title.style.color = "#00e5ff";
             }}
             onMouseLeave={e => {
               const num = e.currentTarget.querySelector(".step-num") as HTMLElement;
@@ -54,7 +54,7 @@ const Process = () => (
       <div className="process-orbital reveal">
         <div style={{ position:"relative", width:380, height:380 }}>
           <div className="orbit orbit-1">
-            <div style={{ position:"absolute", width:10, height:10, borderRadius:"50%", background:"#00f5a0", boxShadow:"0 0 16px #00f5a0", top:-5, left:"50%", transform:"translateX(-50%)" }} />
+            <div style={{ position:"absolute", width:10, height:10, borderRadius:"50%", background:"#00e5ff", boxShadow:"0 0 16px #00e5ff", top:-5, left:"50%", transform:"translateX(-50%)" }} />
           </div>
           <div className="orbit orbit-2">
             <div style={{ position:"absolute", width:10, height:10, borderRadius:"50%", background:"#00c8ff", boxShadow:"0 0 16px #00c8ff", top:-5, left:"50%", transform:"translateX(-50%)" }} />
@@ -62,7 +62,7 @@ const Process = () => (
           <div className="orbit orbit-3">
             <div style={{ position:"absolute", width:10, height:10, borderRadius:"50%", background:"#7b5ea7", boxShadow:"0 0 16px #7b5ea7", top:-5, left:"50%", transform:"translateX(-50%)" }} />
           </div>
-          <div className="font-syne" style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", width:100, height:100, borderRadius:"50%", background:"radial-gradient(circle, rgba(0,245,160,.25), transparent 70%)", display:"flex", alignItems:"center", justifyContent:"center", fontWeight:800, fontSize:"0.875rem", color:"#00f5a0", letterSpacing:"0.06em", textAlign:"center" }}>
+          <div className="font-syne" style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", width:100, height:100, borderRadius:"50%", background:"radial-gradient(circle, rgba(0,229,255,.25), transparent 70%)", display:"flex", alignItems:"center", justifyContent:"center", fontWeight:800, fontSize:"0.875rem", color:"#00e5ff", letterSpacing:"0.06em", textAlign:"center" }}>
             ZEPHRA
           </div>
         </div>

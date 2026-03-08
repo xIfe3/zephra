@@ -1,8 +1,8 @@
 "use client";
 
 const projects = [
-  { label:"SaaS Platform", title:"FlowAnalytics Dashboard", tech:"Next.js · PostgreSQL · Stripe · Recharts", bg:"linear-gradient(135deg,#0a1628,#112244,#0d2035)", accent:"rgba(0,245,160,.06)", col:"large" },
-  { label:"E-Commerce",    title:"Verdant Market Platform",  tech:"React · Node.js · MongoDB · Paystack",   bg:"linear-gradient(135deg,#0f1a10,#1a3320,#0d1f15)", accent:"rgba(0,245,160,.05)", col:"medium" },
+  { label:"SaaS Platform", title:"FlowAnalytics Dashboard", tech:"Next.js · PostgreSQL · Stripe · Recharts", bg:"linear-gradient(135deg,#0a1628,#112244,#0d2035)", accent:"rgba(0,229,255,.06)", col:"large" },
+  { label:"E-Commerce",    title:"Verdant Market Platform",  tech:"React · Node.js · MongoDB · Paystack",   bg:"linear-gradient(135deg,#0f1a10,#1a3320,#0d1f15)", accent:"rgba(0,229,255,.05)", col:"medium" },
   { label:"Mobile App",    title:"HealthSync Patient App",   tech:"React Native · Firebase · FHIR API",     bg:"linear-gradient(135deg,#1a0a1e,#2d1040,#1a0d30)", accent:"rgba(123,94,167,.07)", col:"half" },
   { label:"AI Tool",       title:"DocuAI Contract Parser",   tech:"Python · LangChain · FastAPI · OpenAI",  bg:"linear-gradient(135deg,#1a1000,#2d2000,#1a1500)", accent:"rgba(255,160,0,.04)", col:"half" },
 ];
@@ -21,7 +21,7 @@ const Portfolio = () => (
       }
       .work-card .card-arrow { opacity:0; transition:opacity 0.3s; }
       .work-card .card-content { transform:translateY(8px); transition:transform 0.3s; }
-      .work-card:hover { transform:scale(1.01); border-color:rgba(0,245,160,.3) !important; }
+      .work-card:hover { transform:scale(1.01); border-color:rgba(0,229,255,.3) !important; }
       .work-card:hover .card-arrow { opacity:1; }
       .work-card:hover .card-content { transform:translateY(0); }
     `}</style>
@@ -45,10 +45,10 @@ const Portfolio = () => (
           {/* Dark gradient to bottom */}
           <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(5,5,8,.95) 0%, rgba(5,5,8,.35) 50%, transparent 100%)" }} />
           {/* Arrow badge */}
-          <div className="card-arrow" style={{ position:"absolute", top:20, right:20, width:36, height:36, borderRadius:"50%", background:"rgba(0,245,160,.1)", border:"1px solid rgba(0,245,160,.2)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"0.9rem", color:"#f0f0f8" }}>↗</div>
+          <div className="card-arrow" style={{ position:"absolute", top:20, right:20, width:36, height:36, borderRadius:"50%", background:"rgba(0,229,255,.1)", border:"1px solid rgba(0,229,255,.2)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"0.9rem", color:"#f0f0f8" }}>↗</div>
           {/* Content */}
           <div className="card-content" style={{ position:"absolute", bottom:0, left:0, right:0, padding:"1.75rem" }}>
-            <div style={{ fontSize:"0.7rem", textTransform:"uppercase", letterSpacing:"0.1em", color:"#00f5a0", fontWeight:600, marginBottom:"0.4rem" }}>{p.label}</div>
+            <div style={{ fontSize:"0.7rem", textTransform:"uppercase", letterSpacing:"0.1em", color:"#00e5ff", fontWeight:600, marginBottom:"0.4rem" }}>{p.label}</div>
             <div className="font-syne" style={{ fontWeight:700, fontSize:"1.1rem", color:"#f0f0f8", marginBottom:"0.3rem" }}>{p.title}</div>
             <div style={{ color:"rgba(240,240,248,0.45)", fontSize:"0.8rem" }}>{p.tech}</div>
           </div>

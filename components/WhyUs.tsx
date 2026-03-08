@@ -16,7 +16,7 @@ const WhyUs = () => (
       @media(min-width:640px)  { .why-grid { grid-template-columns:repeat(2,1fr); } }
       @media(min-width:1024px) { .why-grid { grid-template-columns:repeat(3,1fr); } }
       .trust-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:2rem; transition:border-color 0.3s, background 0.3s; }
-      .trust-card:hover { border-color:rgba(0,245,160,.25); background:rgba(0,245,160,.02); }
+      .trust-card:hover { border-color:rgba(0,229,255,.25); background:rgba(0,229,255,.02); }
     `}</style>
 
     <div className="section-label reveal">Why Choose Us</div>

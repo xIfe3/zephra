@@ -31,7 +31,7 @@ const Services = () => (
       {services.map((s) => (
         <div key={s.name} className="service-card bg-bg2" style={{ padding:"2.5rem", position:"relative", overflow:"hidden", transition:"background 0.3s" }}>
           <div className="card-shine" />
-          <div style={{ width:48, height:48, background:"rgba(0,245,160,.1)", border:"1px solid rgba(0,245,160,.2)", borderRadius:12, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"1.4rem", marginBottom:"1.5rem" }}>{s.icon}</div>
+          <div style={{ width:48, height:48, background:"rgba(0,229,255,.1)", border:"1px solid rgba(0,229,255,.2)", borderRadius:12, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"1.4rem", marginBottom:"1.5rem" }}>{s.icon}</div>
           <div className="font-syne" style={{ fontWeight:700, fontSize:"1.15rem", marginBottom:"0.75rem", color:"#f0f0f8" }}>{s.name}</div>
           <p style={{ color:"rgba(240,240,248,0.45)", fontSize:"0.9rem", lineHeight:1.7, marginBottom:"1.25rem" }}>{s.desc}</p>
           <div style={{ display:"flex", flexWrap:"wrap", gap:"0.4rem" }}>

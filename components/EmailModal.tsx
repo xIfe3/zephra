@@ -95,7 +95,7 @@ const EmailModal = ({ open, onClose }: Props) => {
         {status === "sent" ? (
           <div style={{ textAlign: "center", padding: "2rem 0" }}>
             <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>&#10003;</div>
-            <p className="font-syne" style={{ fontWeight: 700, fontSize: "1.2rem", color: "#00f5a0", marginBottom: "0.5rem" }}>
+            <p className="font-syne" style={{ fontWeight: 700, fontSize: "1.2rem", color: "#00e5ff", marginBottom: "0.5rem" }}>
               Message Sent!
             </p>
             <p style={{ color: "rgba(240,240,248,0.45)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>

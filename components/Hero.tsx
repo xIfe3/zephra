@@ -2,15 +2,15 @@ const Hero = () => {
   return (
     <section id="hero" className="bg-bg" style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "140px 5% 80px", position: "relative", overflow: "hidden" }}>
       {/* Orbs */}
-      <div className="anim-float1" style={{ position:"absolute", width:700, height:700, top:-200, right:-200, background:"radial-gradient(circle, rgba(0,245,160,.12), transparent 70%)", filter:"blur(120px)", borderRadius:"50%", pointerEvents:"none" }} />
+      <div className="anim-float1" style={{ position:"absolute", width:700, height:700, top:-200, right:-200, background:"radial-gradient(circle, rgba(0,229,255,.12), transparent 70%)", filter:"blur(120px)", borderRadius:"50%", pointerEvents:"none" }} />
       <div className="anim-float2" style={{ position:"absolute", width:500, height:500, bottom:-100, left:-100, background:"radial-gradient(circle, rgba(0,200,255,.08), transparent 70%)", filter:"blur(120px)", borderRadius:"50%", pointerEvents:"none" }} />
       <div className="anim-float3" style={{ position:"absolute", width:300, height:300, top:"40%", left:"40%", background:"radial-gradient(circle, rgba(123,94,167,.1), transparent 70%)", filter:"blur(120px)", borderRadius:"50%", pointerEvents:"none" }} />
       <div className="grid-bg" />
 
       <div style={{ position:"relative", zIndex:2, width:"100%", maxWidth:860 }}>
         {/* Badge */}
-        <div className="anim-fadeup" style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(0,245,160,.08)", border:"1px solid rgba(0,245,160,.2)", borderRadius:"100px", padding:"5px 14px", fontSize:"0.75rem", fontWeight:500, color:"#00f5a0", textTransform:"uppercase", letterSpacing:"0.06em", marginBottom:"1.75rem" }}>
-          <span className="anim-pulse-fast" style={{ width:6, height:6, borderRadius:"50%", background:"#00f5a0", display:"inline-block" }} />
+        <div className="anim-fadeup" style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(0,229,255,.08)", border:"1px solid rgba(0,229,255,.2)", borderRadius:"100px", padding:"5px 14px", fontSize:"0.75rem", fontWeight:500, color:"#00e5ff", textTransform:"uppercase", letterSpacing:"0.06em", marginBottom:"1.75rem" }}>
+          <span className="anim-pulse-fast" style={{ width:6, height:6, borderRadius:"50%", background:"#00e5ff", display:"inline-block" }} />
           Available for Projects in 2026
         </div>
 
