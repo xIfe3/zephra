@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  FaXTwitter,
+  FaLinkedinIn,
+  FaGithub,
+  FaInstagram,
+} from "react-icons/fa6";
+
 const Footer = () => (
   <footer
     style={{
@@ -55,14 +62,32 @@ const Footer = () => (
     {/* Socials */}
     <div style={{ display: "flex", gap: "0.75rem" }}>
       {[
-        { label: "𝕏", title: "Twitter" },
-        { label: "in", title: "LinkedIn" },
-        { label: "⌥", title: "GitHub" },
-        { label: "◉", title: "Dribbble" },
+        {
+          icon: <FaXTwitter size={18} />,
+          title: "X",
+          href: "https://x.com/zephradev",
+        },
+        {
+          icon: <FaLinkedinIn size={18} />,
+          title: "LinkedIn",
+          href: "https://linkedin.com/company/zephradev",
+        },
+        {
+          icon: <FaGithub size={18} />,
+          title: "GitHub",
+          href: "https://github.com/zephradev",
+        },
+        {
+          icon: <FaInstagram size={18} />,
+          title: "Instagram",
+          href: "https://www.instagram.com/zephradev/",
+        },
       ].map((s) => (
         <a
           key={s.title}
-          href="#"
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
           title={s.title}
           style={{
             width: 38,
@@ -91,7 +116,7 @@ const Footer = () => (
               "rgba(255,255,255,0.04)";
           }}
         >
-          {s.label}
+          {s.icon}
         </a>
       ))}
     </div>
