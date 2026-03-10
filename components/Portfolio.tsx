@@ -1,7 +1,7 @@
 "use client";
 
 const projects = [
-  { label:"SaaS Platform", title:"FlowAnalytics Dashboard", tech:"Next.js · PostgreSQL · Stripe · Recharts", bg:"linear-gradient(135deg,#0a1628,#112244,#0d2035)", accent:"rgba(0,229,255,.06)", col:"large" },
+  { label:"SaaS Platform", title:"FlowAnalytics Dashboard", tech:"Next.js · PostgreSQL · Stripe · Recharts", bg:"url('/projects/FlowAnalytics-—-SaaS-Analytics-Dashboard-03-08-2026_08_53_AM.png') center/cover no-repeat", accent:"rgba(0,229,255,.06)", col:"large" },
   { label:"E-Commerce",    title:"Verdant Market Platform",  tech:"React · Node.js · MongoDB · Paystack",   bg:"linear-gradient(135deg,#0f1a10,#1a3320,#0d1f15)", accent:"rgba(0,229,255,.05)", col:"medium" },
   { label:"Mobile App",    title:"HealthSync Patient App",   tech:"React Native · Firebase · FHIR API",     bg:"linear-gradient(135deg,#1a0a1e,#2d1040,#1a0d30)", accent:"rgba(123,94,167,.07)", col:"half" },
   { label:"AI Tool",       title:"DocuAI Contract Parser",   tech:"Python · LangChain · FastAPI · OpenAI",  bg:"linear-gradient(135deg,#1a1000,#2d2000,#1a1500)", accent:"rgba(255,160,0,.04)", col:"half" },

@@ -1,12 +1,32 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-function buildEmailHtml(name: string, email: string, message: string) {
-  const escapedMessage = message
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/\n/g, "<br/>");
+function esc(s: string) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function buildEmailHtml(name: string, email: string, message: string, company?: string, service?: string) {
+  const escapedMessage = esc(message).replace(/\n/g, "<br/>");
+  const escapedCompany = company ? esc(company) : "";
+  const escapedService = service ? esc(service) : "";
+
+  const extraRows = [
+    escapedCompany && { label: "Company / Project", value: escapedCompany },
+    escapedService && { label: "Service Needed", value: escapedService },
+  ].filter(Boolean) as { label: string; value: string }[];
+
+  const extraHtml = extraRows
+    .map(
+      (r) => `
+            <tr><td style="height:10px;"></td></tr>
+            <tr>
+              <td style="padding:14px 16px;background:#f8f8fb;border:1px solid #e8e8ef;border-radius:10px;">
+                <p style="margin:0 0 3px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9999aa;">${r.label}</p>
+                <p style="margin:0;font-size:15px;color:#0a0a12;font-weight:600;">${r.value}</p>
+              </td>
+            </tr>`
+    )
+    .join("");
 
   return `
 <!DOCTYPE html>
@@ -61,7 +81,7 @@ function buildEmailHtml(name: string, email: string, message: string) {
                 <p style="margin:0 0 3px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#9999aa;">Email</p>
                 <a href="mailto:${email}" style="font-size:15px;color:#00a865;font-weight:600;text-decoration:none;">${email}</a>
               </td>
-            </tr>
+            </tr>${extraHtml}
           </table>
 
           <!-- Divider -->
@@ -106,7 +126,7 @@ function buildEmailHtml(name: string, email: string, message: string) {
 export async function POST(req: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, message, company, service } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -115,12 +135,16 @@ export async function POST(req: Request) {
       );
     }
 
+    const subject = company
+      ? `New enquiry from ${name} — ${company}`
+      : `New enquiry from ${name}`;
+
     await resend.emails.send({
       from: "Zephra Contact <contact@zephra.dev>",
       to: "hello@zephra.dev",
       replyTo: email,
-      subject: `New enquiry from ${name}`,
-      html: buildEmailHtml(name, email, message),
+      subject,
+      html: buildEmailHtml(name, email, message, company, service),
     });
 
     return NextResponse.json({ success: true });
