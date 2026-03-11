@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(cd \"C:/Users/ifeanyitheprogrammer/Hacker Space/agency\" && npx tsc --noEmit --pretty 2>&1 | head -30)",
-      "Bash(cd \"C:/Users/ifeanyitheprogrammer/Hacker Space/agency\" && npx next build 2>&1 | tail -20)"
+      "Bash(cd \"C:/Users/ifeanyitheprogrammer/Hacker Space/agency\" && npx next build 2>&1 | tail -20)",
+      "Bash(grep -rn \"FlowAnalytics\\\\|Verdant\\\\|HealthSync\\\\|DocuAI\" /c/Users/ifeanyitheprogrammer/'Hacker Space'/agency --include=\"*.tsx\" --include=\"*.ts\" --include=\"*.json\" ! -path \"*/node_modules/*\" ! -path \"*/.next/*\")"
     ]
   }
 }
