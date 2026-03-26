@@ -8,6 +8,7 @@ import Trust from "@/components/Trust";
 import WhyUs from "@/components/WhyUs";
 import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
+import Founder from "@/components/Founder";
 import CtaBand from "@/components/CtaBand";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -45,7 +46,10 @@ const Agency = () => {
       {/* 7. About — who we are */}
       <About />
 
-      {/* 8. CTA Band — conversion push before contact */}
+      {/* 8. Founder — meet the person behind Zephra */}
+      <Founder />
+
+      {/* 9. CTA Band — conversion push before contact */}
       <CtaBand />
 
       {/* 9. Contact — the money page */}

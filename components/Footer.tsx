@@ -70,7 +70,7 @@ const Footer = () => (
         {
           icon: <FaLinkedinIn size={18} />,
           title: "LinkedIn",
-          href: "https://linkedin.com/company/zephradev",
+          href: "https://www.linkedin.com/company/zephradev",
         },
         {
           icon: <FaGithub size={18} />,

@@ -2,40 +2,13 @@
 
 const projects = [
   {
-    label: "SaaS Platform",
-    title: "FlowAnalytics Dashboard",
-    tech: "Next.js · PostgreSQL · Stripe · Recharts",
-    bg: "url('/projects/flowanalytics.png') center/cover no-repeat",
-    accent: "rgba(0,229,255,.06)",
-    col: "large",
-    link: "https://flowanalytics-zephra.vercel.app/",
-  },
-  {
-    label: "Health Platform",
-    title: "MediBook Appointment App",
+    label: "Pay Your Bills, The Smart Way",
+    title: "PayZeph Bill Payment App",
     tech: "Next.js · Nest.js · Tailwind · Supabase",
-    bg: "url('/projects/medibook.png') center/cover no-repeat",
+    bg: "url('/projects/payzeph.png') center/cover no-repeat",
     accent: "rgba(0,229,255,.05)",
-    col: "medium",
-    link: "https://medibook-zephra.vercel.app/",
-  },
-  {
-    label: "Mobile App",
-    title: "HealthSync Patient App",
-    tech: "React Native · Firebase · FHIR API",
-    bg: "linear-gradient(135deg,#1a0a1e,#2d1040,#1a0d30)",
-    accent: "rgba(123,94,167,.07)",
-    col: "half",
-    link: "https://healthsync.app",
-  },
-  {
-    label: "AI Tool",
-    title: "DocuAI Contract Parser",
-    tech: "Python · LangChain · FastAPI · OpenAI",
-    bg: "linear-gradient(135deg,#1a1000,#2d2000,#1a1500)",
-    accent: "rgba(255,160,0,.04)",
-    col: "half",
-    link: "https://docuai.dev",
+    col: "large",
+    link: "https://payzeph-zephra.vercel.app/",
   },
 ];
 

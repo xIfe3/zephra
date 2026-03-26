@@ -216,8 +216,7 @@ const Contact = () => {
                 lineHeight: 1.7,
               }}
             >
-              We&apos;re accepting new projects starting{" "}
-              <strong style={{ color: "#f0f0f8" }}>March 2026.</strong> Slots
+              We&apos;re currently accepting new projects. Slots
               are limited — reach out now to reserve your spot.
             </p>
           </div>
@@ -304,6 +303,7 @@ const Contact = () => {
                   style={{ appearance: "none" }}
                   value={form.service}
                   onChange={(e) => set("service", e.target.value)}
+                  required
                 >
                   <option value="">Select a service...</option>
                   {services.map((o) => (
