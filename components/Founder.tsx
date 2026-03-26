@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 
 const socials = [
   {
@@ -92,29 +92,24 @@ const Founder = () => (
       {/* Image column */}
       <div className="reveal">
         <div className="founder-img-wrap">
-          {/* Replace this div with <Image src="/founder.jpg" ... /> once you have a real photo */}
+          <Image
+            src="/founder.jpeg"
+            alt="Ifeanyi Onyekwelu — Founder of Zephra Studio"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center top" }}
+            sizes="(max-width: 1024px) 100vw, 380px"
+            priority
+          />
+          {/* Subtle dark overlay */}
           <div
             style={{
               position: "absolute",
               inset: 0,
-              background: "linear-gradient(135deg, #0a1a2e, #0d2847, #0a1a2e)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              background:
+                "linear-gradient(180deg, rgba(5,5,8,0.15) 0%, rgba(5,5,8,0.3) 60%, rgba(5,5,8,0.75) 100%)",
+              pointerEvents: "none",
             }}
-          >
-            <span
-              className="font-syne"
-              style={{
-                fontSize: "5rem",
-                fontWeight: 800,
-                color: "rgba(0,229,255,0.15)",
-                userSelect: "none",
-              }}
-            >
-              IO
-            </span>
-          </div>
+          />
         </div>
       </div>
 
@@ -177,8 +172,8 @@ const Founder = () => (
             From payment systems to booking platforms to multi-tenant
             dashboards — he brings real breadth to every project. That means
             he doesn't just write code, he understands the business context
-            behind every feature. At Zephra Studio, you're not handed off to
-            a junior dev after the first call. You work directly with the
+            behind every feature. At Zephra Studio, clients aren't handed off
+            to a junior dev after the first call. They work directly with the
             founder, start to finish.
           </p>
         </div>
