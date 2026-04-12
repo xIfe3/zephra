@@ -112,11 +112,9 @@ const Hero = () => {
             marginBottom: "1.5rem",
           }}
         >
-          We Build Software
+          Build Your MVP in 14 Days.
           <br />
-          That <span className="gradient-text">Moves</span> Your
-          <br />
-          Business Forward
+          <span className="gradient-text">Launch This Month.</span>
         </h1>
 
         {/* Sub */}
@@ -130,9 +128,8 @@ const Hero = () => {
             lineHeight: 1.75,
           }}
         >
-          From sleek web apps to complex backend systems — we craft fast,
-          scalable, and beautiful digital products that your clients can't
-          ignore.
+          Your startup idea deserves founders + builders who ship fast. We turn
+          concepts into live products that attract users and investors.
         </p>
 
         {/* CTAs */}
@@ -146,7 +143,7 @@ const Hero = () => {
           }}
         >
           <a href="#contact" className="btn-primary">
-            Start a Project
+            Book Free Scope Call
             <svg
               width="16"
               height="16"

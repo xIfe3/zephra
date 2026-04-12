@@ -6,17 +6,20 @@ const contactItems = [
   { icon: "\u2709\uFE0F", label: "Email", value: "hello@zephra.dev" },
   { icon: "\uD83D\uDCAC", label: "WhatsApp", value: "+234 811 320 8256" },
   { icon: "\uD83D\uDD50", label: "Response Time", value: "Within 24 hours" },
-  { icon: "\uD83C\uDF0D", label: "Location", value: "Nigeria \u00B7 Working Globally" },
+  {
+    icon: "\uD83C\uDF0D",
+    label: "Location",
+    value: "Nigeria \u00B7 Working Globally",
+  },
 ];
 
 const services = [
-  "Web Development",
+  "MVP Build (Full Product)",
   "Mobile App",
-  "Backend / API",
-  "UI/UX Redesign",
+  "Product Audit",
   "AI Integration",
-  "Full Product Build",
-  "Not sure yet",
+  "Need Help Scoping It",
+  "Something Else",
 ];
 
 const Contact = () => {
@@ -27,9 +30,12 @@ const Contact = () => {
     service: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
 
-  const set = (key: string, value: string) => setForm((f) => ({ ...f, [key]: value }));
+  const set = (key: string, value: string) =>
+    setForm((f) => ({ ...f, [key]: value }));
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -54,7 +60,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-bg2" style={{ padding: "7rem 5%", position: "relative" }}>
+    <section
+      id="contact"
+      className="bg-bg2"
+      style={{ padding: "7rem 5%", position: "relative" }}
+    >
       <style>{`
         .contact-grid { display:grid; grid-template-columns:1fr; gap:4rem; }
         @media(min-width:1024px){ .contact-grid { grid-template-columns:1fr 1.2fr; gap:6rem; } }
@@ -107,7 +117,7 @@ const Contact = () => {
         }
       `}</style>
 
-      <div className="section-label reveal">Contact</div>
+      <div className="section-label reveal">Book Your Call</div>
       <h2
         className="font-syne reveal reveal-delay-1"
         style={{
@@ -119,7 +129,7 @@ const Contact = () => {
           marginBottom: "1rem",
         }}
       >
-        Start a Conversation
+        Let&apos;s Define Your MVP
       </h2>
       <p
         className="reveal reveal-delay-2"
@@ -131,8 +141,9 @@ const Contact = () => {
           marginBottom: "3.5rem",
         }}
       >
-        Tell us what you&apos;re building. We&apos;ll respond within 24 hours with honest
-        feedback and next steps.
+        First, book your free 1-hour scope call. We&apos;ll dig into your idea,
+        define the product, and send you a fixed price. Then we build in 14
+        days.
       </p>
 
       <div className="contact-grid">
@@ -216,8 +227,8 @@ const Contact = () => {
                 lineHeight: 1.7,
               }}
             >
-              We&apos;re currently accepting new projects. Slots
-              are limited — reach out now to reserve your spot.
+              We&apos;re currently accepting new projects. Slots are limited —
+              reach out now to reserve your spot.
             </p>
           </div>
         </div>
@@ -246,11 +257,23 @@ const Contact = () => {
                 marginBottom: "2rem",
               }}
             >
-              Thanks for reaching out. We&apos;ll review your message and get back to you within 24 hours.
+              Thanks for reaching out. We&apos;ll review your message and get
+              back to you within 24 hours.
             </p>
-            <button onClick={resetForm} className="btn-primary" style={{ fontSize: "0.95rem", padding: "0.85rem 2.25rem" }}>
+            <button
+              onClick={resetForm}
+              className="btn-primary"
+              style={{ fontSize: "0.95rem", padding: "0.85rem 2.25rem" }}
+            >
               Send Another Message
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
@@ -287,11 +310,11 @@ const Contact = () => {
 
             <div className="contact-form-row">
               <div>
-                <label className="contact-label">Company / Project Name</label>
+                <label className="contact-label">Project Name / Startup</label>
                 <input
                   className="contact-input"
                   type="text"
-                  placeholder="What are we building?"
+                  placeholder="What's your startup called?"
                   value={form.company}
                   onChange={(e) => set("company", e.target.value)}
                 />
@@ -316,11 +339,11 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="contact-label">Tell Us More</label>
+              <label className="contact-label">Tell Us About Your Idea</label>
               <textarea
                 className="contact-input"
                 rows={5}
-                placeholder="Describe your project, timeline, budget range — the more detail, the better we can help..."
+                placeholder="What problem does it solve? What's your target user? Timeline? What's your budget range? The more detail, the better."
                 required
                 value={form.message}
                 onChange={(e) => set("message", e.target.value)}
@@ -340,7 +363,8 @@ const Contact = () => {
                   textAlign: "center",
                 }}
               >
-                Something went wrong. Please try again or email us directly at hello@zephra.dev
+                Something went wrong. Please try again or email us directly at
+                hello@zephra.dev
               </div>
             )}
 
@@ -356,7 +380,14 @@ const Contact = () => {
             >
               {status === "sending" ? "Sending..." : "Send Message"}
               {status !== "sending" && (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
                   <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
                 </svg>
               )}

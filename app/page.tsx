@@ -1,6 +1,7 @@
 import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import OfferSection from "@/components/OfferSection";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import Portfolio from "@/components/Portfolio";
@@ -24,6 +25,9 @@ const Agency = () => {
 
       {/* 1. Hero — first impression, CTA above the fold */}
       <Hero />
+
+      {/* 1.5. Offer Section — the 3-step journey */}
+      <OfferSection />
 
       {/* 2. Services — what we offer */}
       <Services />

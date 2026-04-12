@@ -1,19 +1,33 @@
 "use client";
 
 const stats = [
-  { value: "60+",  label: "Products Shipped",      sub: "across 12 industries" },
-  { value: "4.9",  label: "Client Satisfaction",   sub: "avg. rating out of 5" },
-  { value: "100%", label: "On-Time Delivery",       sub: "no missed deadlines" },
-  { value: "3yrs", label: "In the Industry",        sub: "built on real experience" },
+  {
+    value: "60+",
+    label: "Products Shipped",
+    sub: "across startups & enterprises",
+  },
+  { value: "23", label: "MVPs in 14 Days", sub: "startup launches this year" },
+  { value: "100%", label: "On-Time Delivery", sub: "no missed deadlines" },
+  { value: "4.9★", label: "Client Satisfaction", sub: "avg. rating verified" },
 ];
 
 const logos = [
-  "Fintech", "HealthTech", "SaaS", "E-Commerce", "EdTech",
-  "Logistics", "Real Estate", "NGO", "Media", "Retail",
+  "Fintech Startups",
+  "HealthTech",
+  "SaaS",
+  "EdTech",
+  "E-Commerce",
+  "AI/Automation",
+  "Logistics",
+  "Media",
 ];
 
 const Trust = () => (
-  <section id="trust-band" className="bg-bg2" style={{ padding: "7rem 5%", position: "relative", overflow: "hidden" }}>
+  <section
+    id="trust-band"
+    className="bg-bg2"
+    style={{ padding: "7rem 5%", position: "relative", overflow: "hidden" }}
+  >
     <style>{`
       .stats-grid {
         display: grid;
@@ -74,7 +88,7 @@ const Trust = () => (
     `}</style>
 
     {/* Section header */}
-    <div className="section-label reveal">By the Numbers</div>
+    <div className="section-label reveal">Why Founders Choose Us</div>
     <h2
       className="font-syne reveal reveal-delay-1"
       style={{
@@ -86,7 +100,9 @@ const Trust = () => (
         marginBottom: "0.75rem",
       }}
     >
-      Results That<br />Speak for Themselves
+      Built by Founders.
+      <br />
+      For Founders.
     </h2>
     <p
       className="reveal reveal-delay-2"
@@ -98,7 +114,7 @@ const Trust = () => (
         marginBottom: "3.5rem",
       }}
     >
-      We let the work talk. Every number here is earned, not estimated.
+      Real metrics. Real startups. Real results.
     </p>
 
     {/* Stats grid */}
@@ -119,11 +135,22 @@ const Trust = () => (
           </span>
           <span
             className="font-syne"
-            style={{ fontSize: "1rem", fontWeight: 700, color: "#f0f0f8", marginTop: "0.5rem" }}
+            style={{
+              fontSize: "1rem",
+              fontWeight: 700,
+              color: "#f0f0f8",
+              marginTop: "0.5rem",
+            }}
           >
             {s.label}
           </span>
-          <span style={{ fontSize: "0.78rem", color: "rgba(240,240,248,0.35)", lineHeight: 1.5 }}>
+          <span
+            style={{
+              fontSize: "0.78rem",
+              color: "rgba(240,240,248,0.35)",
+              lineHeight: 1.5,
+            }}
+          >
             {s.sub}
           </span>
         </div>
@@ -158,7 +185,9 @@ const Trust = () => (
     >
       <div className="marquee-track">
         {[...logos, ...logos].map((name, i) => (
-          <span key={i} className="industry-chip">{name}</span>
+          <span key={i} className="industry-chip">
+            {name}
+          </span>
         ))}
       </div>
     </div>

@@ -33,7 +33,7 @@ const Footer = () => (
         <img src="/zephra logo light.png" alt="Zephra" className="w-36" />
       </div>
       <div style={{ fontSize: "0.85rem", color: "rgba(240,240,248,0.45)" }}>
-        © 2026 Zephra Studio. All rights reserved.
+        © 2026 Zephra Studio — MVP Builders for Startups
       </div>
     </div>
 

@@ -106,7 +106,7 @@ const Header = () => {
             ?.scrollIntoView({ behavior: "smooth" })
         }
       >
-        Get a Quote
+        Book Free Scope Call
       </button>
 
       {/* Hamburger — visible on mobile only */}
