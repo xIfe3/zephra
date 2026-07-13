@@ -8,7 +8,9 @@ import {
   SearchCheck,
   Server,
   Palette,
-  ShoppingCart,
+  Store,
+  Globe,
+  Paintbrush2,
   Cloud,
 } from "lucide-react";
 
@@ -53,10 +55,22 @@ const alsoServices = [
     tags: ["Figma", "Design Systems", "Prototyping"],
   },
   {
-    Icon: ShoppingCart,
-    name: "E-commerce Solutions",
-    desc: "Online stores built to convert and scale.",
-    tags: ["Shopify", "Stripe", "Inventory", "Payments"],
+    Icon: Store,
+    name: "Shopify Development",
+    desc: "Custom storefronts, theme builds, and app integrations that convert.",
+    tags: ["Shopify", "Liquid", "Storefront API", "Payments"],
+  },
+  {
+    Icon: Globe,
+    name: "WordPress Development",
+    desc: "Fast, secure WordPress sites and custom themes for content-led businesses.",
+    tags: ["WordPress", "WooCommerce", "Elementor", "CMS"],
+  },
+  {
+    Icon: Paintbrush2,
+    name: "Graphic Design & Branding",
+    desc: "Logos, brand identity, and marketing visuals that make you look the part.",
+    tags: ["Branding", "Logo Design", "Social Media", "Print"],
   },
   {
     Icon: Cloud,

@@ -1,5 +1,20 @@
 "use client";
+
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { BadgeCheck } from "lucide-react";
+
+// Add more photos here (e.g. "/founder-2.jpg") to turn this into a real gallery.
+const founderImages = ["/founder.jpeg"];
+
+const expertise = [
+  "Full-Stack Architecture",
+  "Fintech & Payments Systems",
+  "Technical Leadership",
+  "Product Strategy",
+  "AI / LLM Integration",
+];
 
 const socials = [
   {
@@ -40,41 +55,97 @@ const socials = [
   },
 ];
 
+const FounderGallery = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: founderImages.length > 1 });
+  const [selected, setSelected] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (emblaApi) setSelected(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  return (
+    <div>
+      <div className="founder-img-wrap" ref={emblaRef}>
+        <div style={{ display: "flex", height: "100%" }}>
+          {founderImages.map((src, i) => (
+            <div key={src} style={{ flex: "0 0 100%", position: "relative" }}>
+              <Image
+                src={src}
+                alt={`Ifeanyi Onyekwelu — Founder of Zephra Studio${founderImages.length > 1 ? ` (${i + 1})` : ""}`}
+                fill
+                style={{ objectFit: "cover", objectPosition: "center top" }}
+                sizes="(max-width: 1024px) 100vw, 380px"
+                priority={i === 0}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      {founderImages.length > 1 && (
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.9rem" }}>
+          {founderImages.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Show photo ${i + 1}`}
+              onClick={() => emblaApi?.scrollTo(i)}
+              style={{
+                width: i === selected ? 18 : 7,
+                height: 7,
+                borderRadius: 4,
+                border: "none",
+                padding: 0,
+                background: i === selected ? "var(--brand)" : "var(--line)",
+                transition: "width 0.2s ease, background-color 0.2s ease",
+                cursor: "pointer",
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+
 const Founder = () => (
-  <section id="founder" className="bg-cream" style={{ padding: "7rem 5%", position: "relative" }}>
+  <section id="founder" className="bg-cream" style={{ padding: "6rem 5%", position: "relative" }}>
     <style>{`
-      .founder-grid { display:grid; grid-template-columns:1fr; gap:3rem; align-items:center; max-width:1100px; margin:0 auto; }
-      @media(min-width:1024px){ .founder-grid { grid-template-columns:380px 1fr; gap:5rem; } }
+      .founder-grid { display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:center; max-width:1100px; margin:0 auto; }
+      @media(min-width:1024px){ .founder-grid { grid-template-columns:340px 1fr; gap:4rem; } }
       .founder-img-wrap {
-        position:relative; width:100%; max-width:380px; aspect-ratio:3/4; border-radius:20px; overflow:hidden;
+        position:relative; width:100%; max-width:340px; aspect-ratio:3/4; border-radius:20px; overflow:hidden;
         border:1px solid var(--line); margin:0 auto;
       }
       .founder-social {
         display:inline-flex; align-items:center; justify-content:center;
-        width:42px; height:42px; border-radius:50%;
+        width:40px; height:40px; border-radius:50%;
         border:1px solid var(--line); color:var(--ink-soft);
         transition:border-color 0.2s ease, color 0.2s ease;
         text-decoration:none;
       }
       .founder-social:hover { border-color: var(--brand); color: var(--brand); }
       .founder-stat { text-align:center; }
-      .founder-stats { display:flex; gap:2rem; flex-wrap:wrap; }
-      @media(max-width:767px){ .founder-stats { justify-content:center; } }
+      .founder-stats { display:flex; gap:1.75rem; flex-wrap:wrap; }
+      @media(max-width:1023px){ .founder-stats { justify-content:center; } }
+      .expertise-chip {
+        display:inline-flex; align-items:center; gap:0.4rem;
+        background:var(--paper); border:1px solid var(--line); border-radius:100px;
+        padding:0.35rem 0.85rem; font-size:0.78rem; font-weight:500; color:var(--ink);
+      }
     `}</style>
 
     <div className="founder-grid">
       {/* Image column */}
       <div className="reveal">
-        <div className="founder-img-wrap">
-          <Image
-            src="/founder.jpeg"
-            alt="Ifeanyi Onyekwelu — Founder of Zephra Studio"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center top" }}
-            sizes="(max-width: 1024px) 100vw, 380px"
-            priority
-          />
-        </div>
+        <FounderGallery />
       </div>
 
       {/* Text column */}
@@ -84,56 +155,54 @@ const Founder = () => (
           className="font-display"
           style={{
             fontWeight: 600,
-            fontSize: "clamp(2rem,4vw,3rem)",
+            fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
             color: "var(--ink)",
-            marginBottom: "0.5rem",
+            marginBottom: "0.4rem",
           }}
         >
           Ifeanyi Onyekwelu
         </h2>
-        <p style={{ fontSize: "1.05rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--brand)" }}>
+        <p style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "1.1rem", color: "var(--brand)" }}>
           Founder &amp; Lead Developer — Zephra Studio
         </p>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
-          <p style={{ color: "var(--ink-soft)", lineHeight: 1.8, fontSize: "1rem" }}>
-            Ifeanyi is a full-stack developer with 5 years of experience
-            building web and mobile products across fintech, edtech, and SaaS.
-            He founded Zephra Studio to bring that same engineering quality to
-            businesses that need software done right. When he&apos;s not writing
-            code, he&apos;s teaching tech through his community Blume and documenting
-            the build process publicly.
-          </p>
-          <p style={{ color: "var(--ink-soft)", lineHeight: 1.8, fontSize: "1rem" }}>
-            From payment systems to booking platforms to multi-tenant
-            dashboards — he brings real breadth to every project. That means
-            he doesn&apos;t just write code, he understands the business context
-            behind every feature. At Zephra Studio, clients aren&apos;t handed off
-            to a junior dev after the first call. They work directly with the
-            founder, start to finish.
-          </p>
+        <p style={{ color: "var(--ink-soft)", lineHeight: 1.75, fontSize: "0.95rem", marginBottom: "1.25rem" }}>
+          Full-stack developer with 5 years building web and mobile products
+          across fintech, edtech, and SaaS. Clients work directly with the
+          founder, start to finish — no hand-offs to a junior dev after the
+          first call.
+        </p>
+
+        {/* Expertise tags */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+          {expertise.map((tag) => (
+            <span key={tag} className="expertise-chip">
+              <BadgeCheck size={14} strokeWidth={2} color="var(--brand)" />
+              {tag}
+            </span>
+          ))}
         </div>
 
         {/* Quick stats */}
-        <div className="founder-stats" style={{ marginBottom: "2rem" }}>
+        <div className="founder-stats" style={{ marginBottom: "1.5rem" }}>
           {[
             { value: "5+", label: "Years Experience" },
             { value: "60+", label: "Projects Delivered" },
             { value: "30+", label: "Happy Clients" },
           ].map((stat) => (
             <div key={stat.label} className="founder-stat">
-              <div className="font-display" style={{ fontSize: "1.75rem", fontWeight: 600, color: "var(--brand)", lineHeight: 1 }}>
+              <div className="font-display" style={{ fontSize: "1.6rem", fontWeight: 600, color: "var(--brand)", lineHeight: 1 }}>
                 {stat.value}
               </div>
-              <div style={{ fontSize: "0.78rem", color: "var(--ink-soft)", marginTop: 4 }}>{stat.label}</div>
+              <div style={{ fontSize: "0.75rem", color: "var(--ink-soft)", marginTop: 4 }}>{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* Social links */}
-        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "0.65rem", flexWrap: "wrap" }}>
           {socials.map((s) => (
             <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="founder-social" title={s.name}>
               {s.icon}

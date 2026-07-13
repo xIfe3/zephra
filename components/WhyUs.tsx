@@ -1,6 +1,7 @@
 "use client";
 
 import { Zap, Rocket, Target, Wallet, Volume2, Hammer } from "lucide-react";
+import Carousel from "./Carousel";
 
 const items = [
   {
@@ -35,13 +36,24 @@ const items = [
   },
 ];
 
+const WhyCard = ({ item }: { item: (typeof items)[number] }) => (
+  <div className="trust-card">
+    <div className="trust-icon">
+      <item.Icon size={20} strokeWidth={1.75} />
+    </div>
+    <div className="font-display" style={{ fontWeight: 600, fontSize: "1rem", marginBottom: "0.5rem", color: "var(--ink)" }}>
+      {item.title}
+    </div>
+    <p style={{ color: "var(--ink-soft)", fontSize: "0.875rem", lineHeight: 1.65 }}>{item.text}</p>
+  </div>
+);
+
 const WhyUs = () => (
   <section id="trust" className="bg-paper" style={{ padding: "7rem 5%", position: "relative" }}>
     <style>{`
-      .why-grid { display:grid; grid-template-columns:1fr; gap:1rem; }
-      @media(min-width:640px)  { .why-grid { grid-template-columns:repeat(2,1fr); } }
+      .why-grid { grid-template-columns:repeat(2,1fr); gap:1rem; }
       @media(min-width:1024px) { .why-grid { grid-template-columns:repeat(3,1fr); } }
-      .trust-card { background:var(--cream); border:1px solid var(--line-soft); border-radius:14px; padding:2rem; transition:border-color 0.2s ease; }
+      .trust-card { background:var(--cream); border:1px solid var(--line-soft); border-radius:14px; padding:2rem; transition:border-color 0.2s ease; height:100%; }
       .trust-card:hover { border-color: var(--brand); }
       .trust-icon { width:40px; height:40px; border-radius:10px; background:var(--brand-tint); color:var(--brand-dark); display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
     `}</style>
@@ -63,18 +75,22 @@ const WhyUs = () => (
       Delivered Better.
     </h2>
 
-    <div className="why-grid">
+    {/* Tablet / desktop — grid */}
+    <div className="why-grid hidden sm:grid">
       {items.map((item, i) => (
-        <div key={item.title} className={`trust-card reveal reveal-delay-${i % 4}`}>
-          <div className="trust-icon">
-            <item.Icon size={20} strokeWidth={1.75} />
-          </div>
-          <div className="font-display" style={{ fontWeight: 600, fontSize: "1rem", marginBottom: "0.5rem", color: "var(--ink)" }}>
-            {item.title}
-          </div>
-          <p style={{ color: "var(--ink-soft)", fontSize: "0.875rem", lineHeight: 1.65 }}>{item.text}</p>
+        <div key={item.title} className={`reveal reveal-delay-${i % 4}`}>
+          <WhyCard item={item} />
         </div>
       ))}
+    </div>
+
+    {/* Mobile — drag carousel */}
+    <div className="sm:hidden reveal">
+      <Carousel slideSize="78%">
+        {items.map((item) => (
+          <WhyCard key={item.title} item={item} />
+        ))}
+      </Carousel>
     </div>
   </section>
 );

@@ -1,5 +1,7 @@
 "use client";
 
+import Carousel from "./Carousel";
+
 const OfferSection = () => {
   const steps = [
     {
@@ -31,7 +33,6 @@ const OfferSection = () => {
     >
       <style>{`
         .offer-grid {
-          display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 1.5rem;
           max-width: 1200px;
@@ -73,7 +74,8 @@ const OfferSection = () => {
         </div>
       </div>
 
-      <div className="offer-grid">
+      {/* Desktop / tablet — grid */}
+      <div className="offer-grid hidden sm:grid">
         {steps.map((step) => (
           <div key={step.num} className="offer-card reveal">
             <div className="offer-num">{step.num}</div>
@@ -81,6 +83,19 @@ const OfferSection = () => {
             <p className="offer-desc">{step.desc}</p>
           </div>
         ))}
+      </div>
+
+      {/* Mobile — drag carousel */}
+      <div className="sm:hidden reveal">
+        <Carousel slideSize="86%">
+          {steps.map((step) => (
+            <div key={step.num} className="offer-card">
+              <div className="offer-num">{step.num}</div>
+              <h3 className="offer-title">{step.title}</h3>
+              <p className="offer-desc">{step.desc}</p>
+            </div>
+          ))}
+        </Carousel>
       </div>
 
       <div style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}>

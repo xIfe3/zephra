@@ -1,17 +1,26 @@
 "use client";
 
-const skills = [
-  "React / Next.js",
-  "TypeScript",
-  "Node.js",
-  "Python",
-  "PostgreSQL",
-  "React Native",
-  "AWS / GCP",
-  "Docker",
-  "AI / LLMs",
-  "Figma",
-  "Flutter",
+const skillGroups = [
+  {
+    label: "Engineering",
+    items: ["React / Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL"],
+  },
+  {
+    label: "Mobile",
+    items: ["React Native", "Flutter", "iOS", "Android"],
+  },
+  {
+    label: "Cloud & Infra",
+    items: ["AWS / GCP", "Docker", "CI/CD"],
+  },
+  {
+    label: "AI",
+    items: ["OpenAI", "LangChain", "RAG / Automation"],
+  },
+  {
+    label: "Design & Growth",
+    items: ["Figma", "UI/UX Design", "Graphic Design & Branding", "Shopify", "WordPress"],
+  },
 ];
 
 const About = () => (
@@ -19,8 +28,11 @@ const About = () => (
     <style>{`
       .about-grid { display:grid; grid-template-columns:1fr; gap:4rem; align-items:center; }
       @media(min-width:1024px){ .about-grid { grid-template-columns:1fr 1fr; gap:6rem; } }
-      .skill-chip { background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:0.35rem 0.9rem; font-size:0.8rem; color:var(--ink-soft); transition:border-color 0.2s ease, color 0.2s ease; }
+      .skill-chip { background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:0.35rem 0.9rem; font-size:0.8rem; color:var(--ink-soft); transition:border-color 0.2s ease, color 0.2s ease; white-space:nowrap; }
       .skill-chip:hover { border-color: var(--brand); color: var(--ink); }
+      .skill-group-label { font-size:0.68rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--stone); margin-bottom:0.6rem; }
+      .skill-groups { display:flex; flex-direction:column; gap:1.1rem; min-width:0; max-width:100%; }
+      .skill-row { display:flex; flex-wrap:wrap; gap:0.5rem; min-width:0; }
     `}</style>
 
     <div className="about-grid">
@@ -87,12 +99,12 @@ const About = () => (
           </div>
         </div>
 
-        {/* Floating badges */}
+        {/* Floating badges — pinned to the card's border seam so they never sit over the code text */}
         <div
           style={{
             position: "absolute",
-            top: 32,
-            left: -24,
+            top: -18,
+            left: 24,
             display: "flex",
             alignItems: "center",
             gap: 10,
@@ -113,8 +125,8 @@ const About = () => (
         <div
           style={{
             position: "absolute",
-            bottom: 32,
-            right: -24,
+            bottom: -18,
+            right: 24,
             display: "flex",
             alignItems: "center",
             gap: 10,
@@ -135,7 +147,7 @@ const About = () => (
       </div>
 
       {/* Text */}
-      <div className="reveal reveal-delay-1">
+      <div className="reveal reveal-delay-1" style={{ minWidth: 0 }}>
         <div className="section-label">About Us</div>
         <h2
           className="font-display"
@@ -169,11 +181,18 @@ const About = () => (
             Based in Nigeria. Working globally. Built on honesty, speed, and craft.
           </p>
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-          {skills.map((skill) => (
-            <span key={skill} className="skill-chip">
-              {skill}
-            </span>
+        <div className="skill-groups">
+          {skillGroups.map((group) => (
+            <div key={group.label}>
+              <div className="skill-group-label">{group.label}</div>
+              <div className="skill-row">
+                {group.items.map((skill) => (
+                  <span key={skill} className="skill-chip">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

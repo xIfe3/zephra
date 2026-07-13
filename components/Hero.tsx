@@ -108,17 +108,18 @@ const Hero = () => {
           }}
         >
           {[
-            { num: "60+", label: "Projects Shipped" },
-            { num: "4.9★", label: "Client Rating" },
-            { num: "4yr+", label: "In the Industry" },
-            { num: "100%", label: "On-time Delivery" },
-          ].map(({ num, label }) => (
+            { num: "60", suffix: "+", label: "Projects Shipped" },
+            { num: "4.9", suffix: "★", label: "Client Rating" },
+            { num: "4", suffix: "yr+", label: "In the Industry" },
+            { num: "100", suffix: "%", label: "On-time Delivery" },
+          ].map(({ num, suffix, label }) => (
             <div key={label}>
               <div
                 className="font-display"
                 style={{ fontWeight: 600, fontSize: "2.1rem", lineHeight: 1, color: "var(--ink)" }}
               >
                 {num}
+                <span style={{ color: "var(--brand)" }}>{suffix}</span>
               </div>
               <div
                 style={{

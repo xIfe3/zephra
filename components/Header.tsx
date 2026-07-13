@@ -30,20 +30,33 @@ const Header = () => {
         background: "rgba(255,253,251,0.92)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
+        borderBottom: scrolled
+          ? "1px solid var(--line)"
+          : "1px solid transparent",
         transition: "padding 0.2s ease, border-color 0.2s ease",
       }}
     >
       {/* Logo */}
       <a
         href="#hero"
-        style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+        }}
       >
-        <img src="/logo.png" alt="Zephra" style={{ width: 150, height: "auto" }} />
+        <img
+          src="/logo.png"
+          alt="Zephra"
+          style={{ width: 150, height: "auto" }}
+        />
       </a>
 
       {/* Nav links — hidden on mobile */}
-      <ul className="hidden md:flex" style={{ gap: "2.25rem", listStyle: "none" }}>
+      <ul
+        className="hidden md:flex"
+        style={{ gap: "2.25rem", listStyle: "none" }}
+      >
         {links.map((item) => (
           <li key={item}>
             <a href={`#${item.toLowerCase()}`} className="nav-link">
@@ -103,7 +116,9 @@ const Header = () => {
             background: "var(--ink)",
             borderRadius: 2,
             transition: "transform 0.2s",
-            transform: menuOpen ? "rotate(-45deg) translate(4px, -4px)" : "none",
+            transform: menuOpen
+              ? "rotate(-45deg) translate(4px, -4px)"
+              : "none",
           }}
         />
       </button>
@@ -112,7 +127,12 @@ const Header = () => {
       {menuOpen && (
         <div
           onClick={() => setMenuOpen(false)}
-          style={{ position: "fixed", inset: 0, background: "rgba(34,30,27,0.4)", zIndex: 99 }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(34,30,27,0.4)",
+            zIndex: 99,
+          }}
         />
       )}
 

@@ -1,7 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Check } from "lucide-react";
 import EmailModal from "./EmailModal";
+
+const checklist = [
+  "Fixed price, locked in",
+  "14-day build sprint",
+  "Work directly with the founder",
+  "No long-term contracts",
+];
 
 const CtaBand = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,16 +41,15 @@ const CtaBand = () => {
             marginBottom: "1rem",
           }}
         >
-          Your Startup Idea
+          Stop Planning.
           <br />
-          <span style={{ fontStyle: "italic", color: "var(--brand)" }}>Deserves Real Execution.</span>
+          <span style={{ fontStyle: "italic", color: "var(--brand)" }}>Start Shipping.</span>
         </h2>
         <p
           className="reveal reveal-delay-2"
-          style={{ color: "var(--ink-soft)", fontSize: "1.05rem", maxWidth: 480, margin: "0 auto 2.5rem", lineHeight: 1.7 }}
+          style={{ color: "var(--ink-soft)", fontSize: "1.05rem", maxWidth: 480, margin: "0 auto 2rem", lineHeight: 1.7 }}
         >
-          Get a fixed scope + price in one hour. Then we build your MVP in 14
-          days. No BS, no surprises.
+          One scope call. One fixed price. A live product in 14 days.
         </p>
         <div className="reveal reveal-delay-3" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
           <a href="#contact" className="btn-primary" style={{ fontSize: "1.05rem", padding: "1rem 2.5rem" }}>
@@ -58,6 +65,25 @@ const CtaBand = () => {
           >
             Send an Email
           </button>
+        </div>
+
+        {/* Trust checklist */}
+        <div
+          className="reveal reveal-delay-4"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.75rem 1.75rem",
+            justifyContent: "center",
+            marginTop: "2.75rem",
+          }}
+        >
+          {checklist.map((item) => (
+            <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+              <Check size={16} strokeWidth={2.5} color="var(--brand)" />
+              <span style={{ fontSize: "0.88rem", fontWeight: 500, color: "var(--ink)" }}>{item}</span>
+            </div>
+          ))}
         </div>
       </section>
 
