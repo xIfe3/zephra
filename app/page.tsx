@@ -1,4 +1,3 @@
-import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import OfferSection from "@/components/OfferSection";
@@ -17,9 +16,6 @@ import Footer from "@/components/Footer";
 const Agency = () => {
   return (
     <div>
-      {/* Custom cursor — fixed, sits above everything */}
-      <Cursor />
-
       {/* Fixed top navigation */}
       <Header />
 

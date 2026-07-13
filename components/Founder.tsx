@@ -41,52 +41,26 @@ const socials = [
 ];
 
 const Founder = () => (
-  <section
-    id="founder"
-    className="bg-bg2"
-    style={{ padding: "7rem 5%", position: "relative" }}
-  >
+  <section id="founder" className="bg-cream" style={{ padding: "7rem 5%", position: "relative" }}>
     <style>{`
       .founder-grid { display:grid; grid-template-columns:1fr; gap:3rem; align-items:center; max-width:1100px; margin:0 auto; }
       @media(min-width:1024px){ .founder-grid { grid-template-columns:380px 1fr; gap:5rem; } }
       .founder-img-wrap {
-        position:relative; width:100%; max-width:380px; aspect-ratio:3/4; border-radius:24px; overflow:hidden;
-        border:1px solid rgba(255,255,255,0.08); margin:0 auto;
-      }
-      .founder-img-wrap::after {
-        content:''; position:absolute; inset:0;
-        background:linear-gradient(180deg, transparent 50%, rgba(5,5,8,0.85) 100%);
-        pointer-events:none;
+        position:relative; width:100%; max-width:380px; aspect-ratio:3/4; border-radius:20px; overflow:hidden;
+        border:1px solid var(--line); margin:0 auto;
       }
       .founder-social {
         display:inline-flex; align-items:center; justify-content:center;
         width:42px; height:42px; border-radius:50%;
-        border:1px solid rgba(255,255,255,0.1); color:rgba(240,240,248,0.5);
-        transition:border-color 0.3s, color 0.3s, background 0.3s, transform 0.2s;
+        border:1px solid var(--line); color:var(--ink-soft);
+        transition:border-color 0.2s ease, color 0.2s ease;
         text-decoration:none;
       }
-      .founder-social:hover {
-        border-color:#00e5ff; color:#00e5ff; background:rgba(0,229,255,0.06); transform:translateY(-2px);
-      }
+      .founder-social:hover { border-color: var(--brand); color: var(--brand); }
       .founder-stat { text-align:center; }
       .founder-stats { display:flex; gap:2rem; flex-wrap:wrap; }
       @media(max-width:767px){ .founder-stats { justify-content:center; } }
     `}</style>
-
-    {/* Subtle glow */}
-    <div
-      style={{
-        position: "absolute",
-        top: "50%",
-        left: "30%",
-        width: 400,
-        height: 400,
-        background:
-          "radial-gradient(circle, rgba(0,229,255,0.04), transparent 70%)",
-        transform: "translate(-50%,-50%)",
-        pointerEvents: "none",
-      }}
-    />
 
     <div className="founder-grid">
       {/* Image column */}
@@ -100,16 +74,6 @@ const Founder = () => (
             sizes="(max-width: 1024px) 100vw, 380px"
             priority
           />
-          {/* Subtle dark overlay */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(180deg, rgba(5,5,8,0.15) 0%, rgba(5,5,8,0.3) 60%, rgba(5,5,8,0.75) 100%)",
-              pointerEvents: "none",
-            }}
-          />
         </div>
       </div>
 
@@ -117,62 +81,36 @@ const Founder = () => (
       <div className="reveal reveal-delay-1">
         <div className="section-label">Meet the Founder</div>
         <h2
-          className="font-syne"
+          className="font-display"
           style={{
-            fontWeight: 800,
-            fontSize: "clamp(2rem,4vw,3.2rem)",
+            fontWeight: 600,
+            fontSize: "clamp(2rem,4vw,3rem)",
             lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            color: "#f0f0f8",
+            letterSpacing: "-0.02em",
+            color: "var(--ink)",
             marginBottom: "0.5rem",
           }}
         >
           Ifeanyi Onyekwelu
         </h2>
-        <p
-          className="gradient-text"
-          style={{
-            fontSize: "1.05rem",
-            fontWeight: 600,
-            marginBottom: "1.5rem",
-          }}
-        >
+        <p style={{ fontSize: "1.05rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--brand)" }}>
           Founder &amp; Lead Developer — Zephra Studio
         </p>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            marginBottom: "2rem",
-          }}
-        >
-          <p
-            style={{
-              color: "rgba(240,240,248,0.45)",
-              lineHeight: 1.8,
-              fontSize: "1rem",
-            }}
-          >
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
+          <p style={{ color: "var(--ink-soft)", lineHeight: 1.8, fontSize: "1rem" }}>
             Ifeanyi is a full-stack developer with 5 years of experience
             building web and mobile products across fintech, edtech, and SaaS.
             He founded Zephra Studio to bring that same engineering quality to
-            businesses that need software done right. When he's not writing
-            code, he's teaching tech through his community Blume and documenting
+            businesses that need software done right. When he&apos;s not writing
+            code, he&apos;s teaching tech through his community Blume and documenting
             the build process publicly.
           </p>
-          <p
-            style={{
-              color: "rgba(240,240,248,0.45)",
-              lineHeight: 1.8,
-              fontSize: "1rem",
-            }}
-          >
+          <p style={{ color: "var(--ink-soft)", lineHeight: 1.8, fontSize: "1rem" }}>
             From payment systems to booking platforms to multi-tenant
             dashboards — he brings real breadth to every project. That means
-            he doesn't just write code, he understands the business context
-            behind every feature. At Zephra Studio, clients aren't handed off
+            he doesn&apos;t just write code, he understands the business context
+            behind every feature. At Zephra Studio, clients aren&apos;t handed off
             to a junior dev after the first call. They work directly with the
             founder, start to finish.
           </p>
@@ -186,26 +124,10 @@ const Founder = () => (
             { value: "30+", label: "Happy Clients" },
           ].map((stat) => (
             <div key={stat.label} className="founder-stat">
-              <div
-                className="font-syne"
-                style={{
-                  fontSize: "1.75rem",
-                  fontWeight: 800,
-                  color: "#00e5ff",
-                  lineHeight: 1,
-                }}
-              >
+              <div className="font-display" style={{ fontSize: "1.75rem", fontWeight: 600, color: "var(--brand)", lineHeight: 1 }}>
                 {stat.value}
               </div>
-              <div
-                style={{
-                  fontSize: "0.78rem",
-                  color: "rgba(240,240,248,0.4)",
-                  marginTop: 4,
-                }}
-              >
-                {stat.label}
-              </div>
+              <div style={{ fontSize: "0.78rem", color: "var(--ink-soft)", marginTop: 4 }}>{stat.label}</div>
             </div>
           ))}
         </div>
@@ -213,14 +135,7 @@ const Founder = () => (
         {/* Social links */}
         <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
           {socials.map((s) => (
-            <a
-              key={s.name}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="founder-social"
-              title={s.name}
-            >
+            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="founder-social" title={s.name}>
               {s.icon}
             </a>
           ))}

@@ -1,16 +1,13 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { Mail, MessageCircle, Clock, Globe } from "lucide-react";
 
 const contactItems = [
-  { icon: "\u2709\uFE0F", label: "Email", value: "hello@zephra.dev" },
-  { icon: "\uD83D\uDCAC", label: "WhatsApp", value: "+234 811 320 8256" },
-  { icon: "\uD83D\uDD50", label: "Response Time", value: "Within 24 hours" },
-  {
-    icon: "\uD83C\uDF0D",
-    label: "Location",
-    value: "Nigeria \u00B7 Working Globally",
-  },
+  { Icon: Mail, label: "Email", value: "hello@zephra.dev" },
+  { Icon: MessageCircle, label: "WhatsApp", value: "+234 811 320 8256" },
+  { Icon: Clock, label: "Response Time", value: "Within 24 hours" },
+  { Icon: Globe, label: "Location", value: "Nigeria · Working Globally" },
 ];
 
 const services = [
@@ -30,12 +27,9 @@ const Contact = () => {
     service: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const set = (key: string, value: string) =>
-    setForm((f) => ({ ...f, [key]: value }));
+  const set = (key: string, value: string) => setForm((f) => ({ ...f, [key]: value }));
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -60,39 +54,31 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="bg-bg2"
-      style={{ padding: "7rem 5%", position: "relative" }}
-    >
+    <section id="contact" className="bg-paper" style={{ padding: "7rem 5%", position: "relative" }}>
       <style>{`
         .contact-grid { display:grid; grid-template-columns:1fr; gap:4rem; }
         @media(min-width:1024px){ .contact-grid { grid-template-columns:1fr 1.2fr; gap:6rem; } }
         .contact-form-row { display:grid; grid-template-columns:1fr; gap:1rem; }
         @media(min-width:640px){ .contact-form-row { grid-template-columns:1fr 1fr; } }
         .contact-input {
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 12px;
+          background: var(--cream);
+          border: 1px solid var(--line);
+          border-radius: 8px;
           padding: 0.875rem 1.1rem;
-          color: #f0f0f8;
-          font-family: 'Outfit', sans-serif;
+          color: var(--ink);
+          font-family: 'Plus Jakarta Sans', sans-serif;
           font-size: 0.95rem;
           outline: none;
           width: 100%;
-          transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+          transition: border-color 0.2s ease;
         }
-        .contact-input::placeholder { color: rgba(240,240,248,0.25); }
-        .contact-input:focus {
-          border-color: rgba(0,229,255,.5);
-          background: rgba(0,229,255,.03);
-          box-shadow: 0 0 0 3px rgba(0,229,255,.08);
-        }
+        .contact-input::placeholder { color: var(--stone); }
+        .contact-input:focus { border-color: var(--brand); }
         .contact-label {
           font-size: 0.78rem;
           text-transform: uppercase;
           letter-spacing: 0.06em;
-          color: rgba(240,240,248,0.45);
+          color: var(--ink-soft);
           font-weight: 500;
           margin-bottom: 0.5rem;
           display: block;
@@ -104,28 +90,28 @@ const Contact = () => {
           justify-content: center;
           text-align: center;
           padding: 3rem 1.5rem;
-          background: rgba(0,229,255,.03);
-          border: 1px solid rgba(0,229,255,.12);
-          border-radius: 20px;
+          background: var(--cream);
+          border: 1px solid var(--line);
+          border-radius: 16px;
           min-height: 400px;
         }
         .contact-success-icon {
           width: 64px; height: 64px; border-radius: 50%;
-          background: rgba(0,229,255,.1); border: 1px solid rgba(0,229,255,.25);
+          background: var(--brand-tint); border: 1px solid var(--line);
           display: flex; align-items: center; justify-content: center;
-          font-size: 1.8rem; color: #00e5ff; margin-bottom: 1.5rem;
+          font-size: 1.8rem; color: var(--brand); margin-bottom: 1.5rem;
         }
       `}</style>
 
       <div className="section-label reveal">Book Your Call</div>
       <h2
-        className="font-syne reveal reveal-delay-1"
+        className="font-display reveal reveal-delay-1"
         style={{
-          fontWeight: 800,
-          fontSize: "clamp(2rem,4vw,3.2rem)",
+          fontWeight: 600,
+          fontSize: "clamp(2rem,4vw,3rem)",
           lineHeight: 1.1,
-          letterSpacing: "-0.03em",
-          color: "#f0f0f8",
+          letterSpacing: "-0.02em",
+          color: "var(--ink)",
           marginBottom: "1rem",
         }}
       >
@@ -133,13 +119,7 @@ const Contact = () => {
       </h2>
       <p
         className="reveal reveal-delay-2"
-        style={{
-          color: "rgba(240,240,248,0.45)",
-          fontSize: "1.05rem",
-          lineHeight: 1.7,
-          maxWidth: 520,
-          marginBottom: "3.5rem",
-        }}
+        style={{ color: "var(--ink-soft)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 520, marginBottom: "3.5rem" }}
       >
         First, book your free 1-hour scope call. We&apos;ll dig into your idea,
         define the product, and send you a fixed price. Then we build in 14
@@ -152,81 +132,36 @@ const Contact = () => {
           {contactItems.map((item) => (
             <div
               key={item.label}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "1rem",
-                padding: "1.25rem 0",
-                borderBottom: "1px solid rgba(255,255,255,0.08)",
-              }}
+              style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "1.25rem 0", borderBottom: "1px solid var(--line)" }}
             >
               <div
                 style={{
                   width: 44,
                   height: 44,
-                  borderRadius: 12,
-                  background: "rgba(0,229,255,.08)",
-                  border: "1px solid rgba(0,229,255,.15)",
+                  borderRadius: 10,
+                  background: "var(--brand-tint)",
+                  color: "var(--brand-dark)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "1.1rem",
                   flexShrink: 0,
                 }}
               >
-                {item.icon}
+                <item.Icon size={19} strokeWidth={1.75} />
               </div>
               <div>
-                <div
-                  style={{
-                    fontSize: "0.7rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    color: "rgba(240,240,248,0.45)",
-                  }}
-                >
+                <div style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--ink-soft)" }}>
                   {item.label}
                 </div>
-                <div
-                  style={{
-                    fontWeight: 500,
-                    fontSize: "0.9rem",
-                    color: "#f0f0f8",
-                    marginTop: 2,
-                  }}
-                >
-                  {item.value}
-                </div>
+                <div style={{ fontWeight: 500, fontSize: "0.9rem", color: "var(--ink)", marginTop: 2 }}>{item.value}</div>
               </div>
             </div>
           ))}
-          <div
-            style={{
-              marginTop: "2rem",
-              padding: "1.5rem",
-              background: "rgba(0,229,255,.05)",
-              border: "1px solid rgba(0,229,255,.15)",
-              borderRadius: 16,
-            }}
-          >
-            <div
-              style={{
-                fontSize: "0.78rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                color: "#00e5ff",
-                marginBottom: "0.5rem",
-              }}
-            >
+          <div style={{ marginTop: "2rem", padding: "1.5rem", background: "var(--cream)", border: "1px solid var(--line)", borderRadius: 14 }}>
+            <div style={{ fontSize: "0.78rem", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--brand)", marginBottom: "0.5rem" }}>
               Currently Available
             </div>
-            <p
-              style={{
-                fontSize: "0.9rem",
-                color: "rgba(240,240,248,0.45)",
-                lineHeight: 1.7,
-              }}
-            >
+            <p style={{ fontSize: "0.9rem", color: "var(--ink-soft)", lineHeight: 1.7 }}>
               We&apos;re currently accepting new projects. Slots are limited —
               reach out now to reserve your spot.
             </p>
@@ -237,52 +172,19 @@ const Contact = () => {
         {status === "sent" ? (
           <div className="contact-success">
             <div className="contact-success-icon">&#10003;</div>
-            <h3
-              className="font-syne"
-              style={{
-                fontWeight: 700,
-                fontSize: "1.4rem",
-                color: "#00e5ff",
-                marginBottom: "0.5rem",
-              }}
-            >
+            <h3 className="font-display" style={{ fontWeight: 600, fontSize: "1.4rem", color: "var(--ink)", marginBottom: "0.5rem" }}>
               Message Sent Successfully!
             </h3>
-            <p
-              style={{
-                color: "rgba(240,240,248,0.45)",
-                fontSize: "0.95rem",
-                lineHeight: 1.7,
-                maxWidth: 340,
-                marginBottom: "2rem",
-              }}
-            >
+            <p style={{ color: "var(--ink-soft)", fontSize: "0.95rem", lineHeight: 1.7, maxWidth: 340, marginBottom: "2rem" }}>
               Thanks for reaching out. We&apos;ll review your message and get
               back to you within 24 hours.
             </p>
-            <button
-              onClick={resetForm}
-              className="btn-primary"
-              style={{ fontSize: "0.95rem", padding: "0.85rem 2.25rem" }}
-            >
+            <button onClick={resetForm} className="btn-primary" style={{ fontSize: "0.95rem", padding: "0.85rem 2.25rem" }}>
               Send Another Message
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
             </button>
           </div>
         ) : (
-          <form
-            onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
-          >
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <div className="contact-form-row">
               <div>
                 <label className="contact-label">Your Name</label>
@@ -330,9 +232,7 @@ const Contact = () => {
                 >
                   <option value="">Select a service...</option>
                   {services.map((o) => (
-                    <option key={o} style={{ background: "#1a1a24" }}>
-                      {o}
-                    </option>
+                    <option key={o}>{o}</option>
                   ))}
                 </select>
               </div>
@@ -355,10 +255,10 @@ const Contact = () => {
               <div
                 style={{
                   padding: "0.85rem 1.1rem",
-                  background: "rgba(255,92,92,.08)",
-                  border: "1px solid rgba(255,92,92,.2)",
-                  borderRadius: 12,
-                  color: "#ff5c5c",
+                  background: "#fbeceb",
+                  border: "1px solid #e8b8b3",
+                  borderRadius: 10,
+                  color: "#9a3b30",
                   fontSize: "0.88rem",
                   textAlign: "center",
                 }}
@@ -372,22 +272,11 @@ const Contact = () => {
               type="submit"
               className="btn-primary"
               disabled={status === "sending"}
-              style={{
-                alignSelf: "flex-start",
-                opacity: status === "sending" ? 0.7 : 1,
-                pointerEvents: status === "sending" ? "none" : "auto",
-              }}
+              style={{ alignSelf: "flex-start" }}
             >
               {status === "sending" ? "Sending..." : "Send Message"}
               {status !== "sending" && (
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
                 </svg>
               )}

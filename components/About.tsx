@@ -15,16 +15,12 @@ const skills = [
 ];
 
 const About = () => (
-  <section
-    id="about"
-    className="bg-bg"
-    style={{ padding: "7rem 5%", position: "relative" }}
-  >
+  <section id="about" className="bg-paper" style={{ padding: "7rem 5%", position: "relative" }}>
     <style>{`
       .about-grid { display:grid; grid-template-columns:1fr; gap:4rem; align-items:center; }
       @media(min-width:1024px){ .about-grid { grid-template-columns:1fr 1fr; gap:6rem; } }
-      .skill-chip { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.35rem 0.9rem; font-size:0.8rem; color:rgba(240,240,248,0.45); transition:border-color 0.3s, color 0.3s; cursor:default; }
-      .skill-chip:hover { border-color:rgba(0,229,255,.3); color:#f0f0f8; }
+      .skill-chip { background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:0.35rem 0.9rem; font-size:0.8rem; color:var(--ink-soft); transition:border-color 0.2s ease, color 0.2s ease; }
+      .skill-chip:hover { border-color: var(--brand); color: var(--ink); }
     `}</style>
 
     <div className="about-grid">
@@ -34,9 +30,9 @@ const About = () => (
           style={{
             position: "absolute",
             inset: 0,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: 24,
+            background: "var(--cream)",
+            border: "1px solid var(--line)",
+            borderRadius: 20,
             overflow: "hidden",
             display: "flex",
             alignItems: "center",
@@ -45,65 +41,49 @@ const About = () => (
         >
           <div
             style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "radial-gradient(ellipse 80% 50% at 50% 20%, rgba(0,229,255,.07), transparent), radial-gradient(ellipse 60% 60% at 80% 80%, rgba(0,200,255,.05), transparent)",
-              pointerEvents: "none",
-            }}
-          />
-          <div
-            style={{
               position: "relative",
               zIndex: 2,
               fontFamily: "'Courier New', monospace",
               fontSize: "0.78rem",
               lineHeight: 1.8,
-              color: "rgba(240,240,248,0.6)",
+              color: "var(--ink)",
               padding: "2rem",
               width: "100%",
             }}
           >
-            <span style={{ color: "rgba(240,240,248,0.3)" }}>
-              {"// Zephra — core principles"}
-            </span>
+            <span style={{ color: "var(--stone)" }}>{"// Zephra — core principles"}</span>
             <br />
-            <span style={{ color: "#cc99cd" }}>const</span>{" "}
-            <span style={{ color: "#6fb3d2" }}>zephra</span>
+            <span style={{ color: "var(--brand-dark)" }}>const</span> zephra
             {" = {"}
             <br />
-            {"  "}mission:{" "}
-            <span style={{ color: "#00e5ff" }}>"ship things that work"</span>,
+            {"  "}mission: <span style={{ color: "var(--brand)" }}>&quot;ship things that work&quot;</span>,
             <br />
             {"  "}values:{" ["}
             <br />
             {"    "}
-            <span style={{ color: "#00e5ff" }}>"clarity"</span>,
+            <span style={{ color: "var(--brand)" }}>&quot;clarity&quot;</span>,
             <br />
             {"    "}
-            <span style={{ color: "#00e5ff" }}>"speed"</span>,
+            <span style={{ color: "var(--brand)" }}>&quot;speed&quot;</span>,
             <br />
             {"    "}
-            <span style={{ color: "#00e5ff" }}>"quality"</span>,
+            <span style={{ color: "var(--brand)" }}>&quot;quality&quot;</span>,
             <br />
             {"    "}
-            <span style={{ color: "#00e5ff" }}>"honesty"</span>
+            <span style={{ color: "var(--brand)" }}>&quot;honesty&quot;</span>
             <br />
             {"  "}
             {"],"}
             <br />
-            {"  "}stack:{" "}
-            <span style={{ color: "#00e5ff" }}>"whatever the job needs"</span>,
+            {"  "}stack: <span style={{ color: "var(--brand)" }}>&quot;whatever the job needs&quot;</span>,
             <br />
-            {"  "}deliveryMode:{" "}
-            <span style={{ color: "#00e5ff" }}>"relentless"</span>,<br />
-            {"  "}bullshit: <span style={{ color: "#00e5ff" }}>false</span>,
+            {"  "}deliveryMode: <span style={{ color: "var(--brand)" }}>&quot;relentless&quot;</span>,<br />
+            {"  "}bullshit: <span style={{ color: "var(--brand-dark)" }}>false</span>,
             <br />
             {"};"}
             <br />
             <br />
-            <span style={{ color: "#cc99cd" }}>export default</span>{" "}
-            <span style={{ color: "#6fb3d2" }}>zephra</span>;
+            <span style={{ color: "var(--brand-dark)" }}>export default</span> zephra;
           </div>
         </div>
 
@@ -116,29 +96,18 @@ const About = () => (
             display: "flex",
             alignItems: "center",
             gap: 10,
-            background: "rgba(5,5,8,.95)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: 14,
+            background: "var(--paper)",
+            border: "1px solid var(--line)",
+            borderRadius: 12,
             padding: "0.7rem 1.25rem",
-            backdropFilter: "blur(12px)",
-            boxShadow: "0 8px 32px rgba(0,0,0,.5)",
+            boxShadow: "0 8px 24px rgba(34,30,27,0.08)",
             fontSize: "0.82rem",
             fontWeight: 500,
-            color: "#f0f0f8",
+            color: "var(--ink)",
             whiteSpace: "nowrap",
           }}
         >
-          <span
-            className="anim-pulse"
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: "#00e5ff",
-              boxShadow: "0 0 8px #00e5ff",
-              flexShrink: 0,
-            }}
-          />
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--brand)", flexShrink: 0 }} />
           Currently Accepting Projects
         </div>
         <div
@@ -149,28 +118,18 @@ const About = () => (
             display: "flex",
             alignItems: "center",
             gap: 10,
-            background: "rgba(5,5,8,.95)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: 14,
+            background: "var(--paper)",
+            border: "1px solid var(--line)",
+            borderRadius: 12,
             padding: "0.7rem 1.25rem",
-            backdropFilter: "blur(12px)",
-            boxShadow: "0 8px 32px rgba(0,0,0,.5)",
+            boxShadow: "0 8px 24px rgba(34,30,27,0.08)",
             fontSize: "0.82rem",
             fontWeight: 500,
-            color: "#f0f0f8",
+            color: "var(--ink)",
             whiteSpace: "nowrap",
           }}
         >
-          <span
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: "#00c8ff",
-              boxShadow: "0 0 8px #00c8ff",
-              flexShrink: 0,
-            }}
-          />
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--stone)", flexShrink: 0 }} />
           60+ Products Shipped
         </div>
       </div>
@@ -179,61 +138,35 @@ const About = () => (
       <div className="reveal reveal-delay-1">
         <div className="section-label">About Us</div>
         <h2
-          className="font-syne"
+          className="font-display"
           style={{
-            fontWeight: 800,
-            fontSize: "clamp(2rem,4vw,3.2rem)",
+            fontWeight: 600,
+            fontSize: "clamp(2rem,4vw,3rem)",
             lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            color: "#f0f0f8",
+            letterSpacing: "-0.02em",
+            color: "var(--ink)",
             marginBottom: "1.5rem",
           }}
         >
-          We're Developers
+          We&apos;re Developers
           <br />
           Who Actually Care
         </h2>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            marginBottom: "2rem",
-          }}
-        >
-          <p
-            style={{
-              color: "rgba(240,240,248,0.45)",
-              lineHeight: 1.8,
-              fontSize: "1rem",
-            }}
-          >
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
+          <p style={{ color: "var(--ink-soft)", lineHeight: 1.8, fontSize: "1rem" }}>
             Zephra Studio was built out of frustration with agencies that
-            overpromise, underdeliver, and disappear after the invoice. We're a
+            overpromise, underdeliver, and disappear after the invoice. We&apos;re a
             small, sharp team of engineers and designers who care deeply about
             the products we build.
           </p>
-          <p
-            style={{
-              color: "rgba(240,240,248,0.45)",
-              lineHeight: 1.8,
-              fontSize: "1rem",
-            }}
-          >
+          <p style={{ color: "var(--ink-soft)", lineHeight: 1.8, fontSize: "1rem" }}>
             We work with startups, SMEs, and growing businesses who need real
             technical partners — not order-takers. If you have a problem that
-            needs a software solution, we'll help you find the right one and
+            needs a software solution, we&apos;ll help you find the right one and
             build it without wasting your time or money.
           </p>
-          <p
-            style={{
-              color: "rgba(240,240,248,0.45)",
-              lineHeight: 1.8,
-              fontSize: "1rem",
-            }}
-          >
-            Based in Nigeria. Working globally. Built on honesty, speed, and
-            craft.
+          <p style={{ color: "var(--ink-soft)", lineHeight: 1.8, fontSize: "1rem" }}>
+            Based in Nigeria. Working globally. Built on honesty, speed, and craft.
           </p>
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>

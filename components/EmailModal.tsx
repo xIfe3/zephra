@@ -48,19 +48,18 @@ const EmailModal = ({ open, onClose }: Props) => {
       onClick={onClose}
       style={{
         position: "fixed", inset: 0, zIndex: 1000,
-        background: "rgba(5,5,8,0.85)", backdropFilter: "blur(8px)",
+        background: "rgba(34,30,27,0.5)",
         display: "flex", alignItems: "center", justifyContent: "center",
         padding: "1rem",
-        animation: "fadeUp .35s ease both",
       }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
           width: "100%", maxWidth: 520,
-          background: "#0a0a12",
-          border: "1px solid rgba(255,255,255,0.08)",
-          borderRadius: 24, padding: "2.5rem",
+          background: "var(--paper)",
+          border: "1px solid var(--line)",
+          borderRadius: 20, padding: "2.5rem",
           position: "relative",
         }}
       >
@@ -69,8 +68,8 @@ const EmailModal = ({ open, onClose }: Props) => {
           onClick={onClose}
           style={{
             position: "absolute", top: 16, right: 16,
-            background: "none", border: "none", color: "rgba(240,240,248,0.45)",
-            fontSize: "1.5rem", cursor: "none", lineHeight: 1,
+            background: "none", border: "none", color: "var(--ink-soft)",
+            fontSize: "1.5rem", cursor: "pointer", lineHeight: 1,
           }}
           aria-label="Close"
         >
@@ -79,27 +78,27 @@ const EmailModal = ({ open, onClose }: Props) => {
 
         <div className="section-label" style={{ justifyContent: "center" }}>Get in Touch</div>
         <h3
-          className="font-syne"
+          className="font-display"
           style={{
-            fontWeight: 800, fontSize: "clamp(1.4rem,3vw,1.8rem)",
-            textAlign: "center", color: "#f0f0f8",
+            fontWeight: 600, fontSize: "clamp(1.4rem,3vw,1.8rem)",
+            textAlign: "center", color: "var(--ink)",
             marginBottom: "0.5rem",
           }}
         >
           Send Us a Message
         </h3>
-        <p style={{ textAlign: "center", color: "rgba(240,240,248,0.45)", fontSize: "0.9rem", marginBottom: "2rem", lineHeight: 1.7 }}>
-          We'll get back to you within 24 hours.
+        <p style={{ textAlign: "center", color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "2rem", lineHeight: 1.7 }}>
+          We&apos;ll get back to you within 24 hours.
         </p>
 
         {status === "sent" ? (
           <div style={{ textAlign: "center", padding: "2rem 0" }}>
-            <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>&#10003;</div>
-            <p className="font-syne" style={{ fontWeight: 700, fontSize: "1.2rem", color: "#00e5ff", marginBottom: "0.5rem" }}>
+            <div style={{ fontSize: "2.5rem", marginBottom: "1rem", color: "var(--brand)" }}>&#10003;</div>
+            <p className="font-display" style={{ fontWeight: 600, fontSize: "1.2rem", color: "var(--ink)", marginBottom: "0.5rem" }}>
               Message Sent!
             </p>
-            <p style={{ color: "rgba(240,240,248,0.45)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
-              We'll be in touch soon.
+            <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
+              We&apos;ll be in touch soon.
             </p>
             <button onClick={onClose} className="btn-primary" style={{ fontSize: "0.95rem", padding: "0.75rem 2rem" }}>
               Close
@@ -134,7 +133,7 @@ const EmailModal = ({ open, onClose }: Props) => {
             />
 
             {status === "error" && (
-              <p style={{ color: "#ff5c5c", fontSize: "0.85rem", textAlign: "center" }}>
+              <p style={{ color: "#9a3b30", fontSize: "0.85rem", textAlign: "center" }}>
                 Something went wrong. Please try again.
               </p>
             )}
@@ -143,11 +142,7 @@ const EmailModal = ({ open, onClose }: Props) => {
               type="submit"
               className="btn-primary"
               disabled={status === "sending"}
-              style={{
-                width: "100%", justifyContent: "center",
-                fontSize: "1rem", padding: "1rem",
-                opacity: status === "sending" ? 0.7 : 1,
-              }}
+              style={{ width: "100%", justifyContent: "center", fontSize: "1rem", padding: "1rem" }}
             >
               {status === "sending" ? "Sending..." : "Send Message"}
               {status !== "sending" && (

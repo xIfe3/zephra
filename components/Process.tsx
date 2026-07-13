@@ -24,29 +24,27 @@ const steps = [
 ];
 
 const Process = () => (
-  <section
-    id="process"
-    className="bg-bg"
-    style={{ padding: "7rem 5%", position: "relative" }}
-  >
+  <section id="process" className="bg-paper" style={{ padding: "7rem 5%", position: "relative" }}>
     <style>{`
       .process-grid { display:grid; grid-template-columns:1fr; gap:4rem; align-items:center; }
       @media(min-width:1024px){ .process-grid { grid-template-columns:1fr 1fr; gap:6rem; } }
-      .process-orbital { display:none; }
-      @media(min-width:1024px){ .process-orbital { display:flex; align-items:center; justify-content:center; } }
+      .process-visual { display:none; }
+      @media(min-width:1024px){ .process-visual { display:flex; align-items:center; justify-content:center; } }
+      .process-step .step-num { color: var(--stone); transition: color 0.2s ease; }
+      .process-step:hover .step-num { color: var(--brand); }
     `}</style>
     <div className="process-grid">
       {/* Steps column */}
       <div>
         <div className="section-label reveal">How It Works</div>
         <h2
-          className="font-syne reveal reveal-delay-1"
+          className="font-display reveal reveal-delay-1"
           style={{
-            fontWeight: 800,
-            fontSize: "clamp(2rem,4vw,3.2rem)",
+            fontWeight: 600,
+            fontSize: "clamp(2rem,4vw,3rem)",
             lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            color: "#f0f0f8",
+            letterSpacing: "-0.02em",
+            color: "var(--ink)",
             marginBottom: "1rem",
           }}
         >
@@ -56,13 +54,7 @@ const Process = () => (
         </h2>
         <p
           className="reveal reveal-delay-2"
-          style={{
-            color: "rgba(240,240,248,0.45)",
-            fontSize: "1.05rem",
-            lineHeight: 1.7,
-            maxWidth: 480,
-            marginBottom: "2.5rem",
-          }}
+          style={{ color: "var(--ink-soft)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 480, marginBottom: "2.5rem" }}
         >
           4 clear phases. Weekly updates. No scope creep. Real products. Most
           MVPs: 2 weeks, 4 sprints, ready to launch.
@@ -70,148 +62,68 @@ const Process = () => (
         {steps.map((step, i) => (
           <div
             key={step.num}
-            className={`reveal reveal-delay-${i}`}
+            className={`process-step reveal reveal-delay-${i}`}
             style={{
               display: "flex",
               gap: "1.5rem",
               padding: "1.75rem 0",
-              borderBottom:
-                i < steps.length - 1
-                  ? "1px solid rgba(255,255,255,0.08)"
-                  : "none",
-            }}
-            onMouseEnter={(e) => {
-              const num = e.currentTarget.querySelector(
-                ".step-num",
-              ) as HTMLElement;
-              const title = e.currentTarget.querySelector(
-                ".step-title",
-              ) as HTMLElement;
-              if (num) num.style.color = "rgba(0,229,255,.25)";
-              if (title) title.style.color = "#00e5ff";
-            }}
-            onMouseLeave={(e) => {
-              const num = e.currentTarget.querySelector(
-                ".step-num",
-              ) as HTMLElement;
-              const title = e.currentTarget.querySelector(
-                ".step-title",
-              ) as HTMLElement;
-              if (num) num.style.color = "rgba(255,255,255,0.08)";
-              if (title) title.style.color = "#f0f0f8";
+              borderBottom: i < steps.length - 1 ? "1px solid var(--line)" : "none",
             }}
           >
             <div
-              className="step-num font-syne"
-              style={{
-                fontWeight: 800,
-                fontSize: "2.5rem",
-                color: "rgba(255,255,255,0.08)",
-                minWidth: 56,
-                lineHeight: 1,
-                transition: "color 0.3s",
-              }}
+              className="step-num font-display"
+              style={{ fontWeight: 600, fontSize: "2.25rem", minWidth: 56, lineHeight: 1 }}
             >
               {step.num}
             </div>
             <div>
               <div
-                className="step-title font-syne"
-                style={{
-                  fontWeight: 700,
-                  fontSize: "1.05rem",
-                  color: "#f0f0f8",
-                  marginBottom: "0.4rem",
-                  transition: "color 0.3s",
-                }}
+                className="font-display"
+                style={{ fontWeight: 600, fontSize: "1.05rem", color: "var(--ink)", marginBottom: "0.4rem" }}
               >
                 {step.title}
               </div>
-              <p
-                style={{
-                  color: "rgba(240,240,248,0.45)",
-                  fontSize: "0.875rem",
-                  lineHeight: 1.7,
-                }}
-              >
-                {step.text}
-              </p>
+              <p style={{ color: "var(--ink-soft)", fontSize: "0.875rem", lineHeight: 1.7 }}>{step.text}</p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Orbital visual */}
-      <div className="process-orbital reveal">
-        <div style={{ position: "relative", width: 380, height: 380 }}>
-          <div className="orbit orbit-1">
-            <div
-              style={{
-                position: "absolute",
-                width: 10,
-                height: 10,
-                borderRadius: "50%",
-                background: "#00e5ff",
-                boxShadow: "0 0 16px #00e5ff",
-                top: -5,
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            />
-          </div>
-          <div className="orbit orbit-2">
-            <div
-              style={{
-                position: "absolute",
-                width: 10,
-                height: 10,
-                borderRadius: "50%",
-                background: "#00c8ff",
-                boxShadow: "0 0 16px #00c8ff",
-                top: -5,
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            />
-          </div>
-          <div className="orbit orbit-3">
-            <div
-              style={{
-                position: "absolute",
-                width: 10,
-                height: 10,
-                borderRadius: "50%",
-                background: "#7b5ea7",
-                boxShadow: "0 0 16px #7b5ea7",
-                top: -5,
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            />
+      {/* Visual */}
+      <div className="process-visual reveal">
+        <div
+          style={{
+            width: 320,
+            height: 320,
+            borderRadius: 20,
+            border: "1px solid var(--line)",
+            background: "var(--cream)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            padding: "2rem",
+          }}
+        >
+          <div
+            className="font-display"
+            style={{ fontWeight: 600, fontSize: "5.5rem", lineHeight: 1, color: "var(--brand)" }}
+          >
+            14
           </div>
           <div
-            className="font-syne"
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%,-50%)",
-              width: 100,
-              height: 100,
-              borderRadius: "50%",
-              background:
-                "radial-gradient(circle, rgba(0,229,255,.25), transparent 70%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: 800,
-              fontSize: "0.875rem",
-              color: "#00e5ff",
-              letterSpacing: "0.06em",
-              textAlign: "center",
+              fontSize: "0.85rem",
+              color: "var(--ink-soft)",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              marginTop: "1rem",
             }}
           >
-            ZEPHRA
+            Days from Kickoff
+            <br />
+            to Launch
           </div>
         </div>
       </div>

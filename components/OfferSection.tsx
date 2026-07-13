@@ -22,60 +22,53 @@ const OfferSection = () => {
   return (
     <section
       id="offer"
-      className="bg-bg"
+      className="bg-paper"
       style={{
         padding: "6rem 5%",
         position: "relative",
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        borderBottom: "1px solid var(--line)",
       }}
     >
       <style>{`
         .offer-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1.5rem;
           max-width: 1200px;
           margin: 0 auto;
         }
         .offer-card {
           padding: 2.5rem;
-          border-radius: 16px;
-          background: rgba(0,229,255,0.02);
-          border: 1px solid rgba(0,229,255,0.15);
+          border-radius: 12px;
+          background: var(--cream);
+          border: 1px solid var(--line-soft);
           display: flex;
           flex-direction: column;
           gap: 1rem;
-          transition: all 0.3s ease;
+          transition: border-color 0.2s ease;
         }
-        .offer-card:hover {
-          background: rgba(0,229,255,0.05);
-          border-color: rgba(0,229,255,0.3);
-          transform: translateY(-4px);
-        }
+        .offer-card:hover { border-color: var(--brand); }
         .offer-num {
-          font-size: 2rem;
-          font-weight: 800;
-          color: #00e5ff;
-          font-family: 'Syne', sans-serif;
+          font-size: 1.9rem;
+          font-weight: 600;
+          color: var(--brand);
+          font-family: 'Fraunces', serif;
         }
         .offer-title {
-          font-size: 1.3rem;
-          font-weight: 700;
-          color: #f0f0f8;
-          font-family: 'Syne', sans-serif;
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: var(--ink);
+          font-family: 'Fraunces', serif;
         }
         .offer-desc {
           font-size: 0.95rem;
-          color: rgba(240,240,248,0.6);
+          color: var(--ink-soft);
           line-height: 1.7;
         }
       `}</style>
 
       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-        <div
-          className="section-label reveal"
-          style={{ justifyContent: "center" }}
-        >
+        <div className="section-label reveal" style={{ justifyContent: "center" }}>
           How Most Startups Get Started With Us
         </div>
       </div>
@@ -90,27 +83,14 @@ const OfferSection = () => {
         ))}
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "3rem",
-        }}
-      >
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}>
         <a
           href="#contact"
           className="btn-primary"
           style={{ fontSize: "1.05rem", padding: "1rem 2.5rem" }}
         >
           Book Your Free Scope Call
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-          >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </a>

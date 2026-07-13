@@ -25,27 +25,23 @@ const testimonials = [
 ];
 
 const Testimonials = () => (
-  <section
-    id="testimonials"
-    className="bg-bg2"
-    style={{ padding: "7rem 5%", position: "relative" }}
-  >
+  <section id="testimonials" className="bg-cream" style={{ padding: "7rem 5%", position: "relative" }}>
     <style>{`
       .testi-grid { display:grid; grid-template-columns:1fr; gap:1.5rem; }
       @media(min-width:768px){ .testi-grid { grid-template-columns:repeat(3,1fr); } }
-      .testi-card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:2rem; position:relative; overflow:hidden; transition:border-color 0.3s; }
-      .testi-card:hover { border-color:rgba(0,229,255,.2); }
+      .testi-card { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:2rem; position:relative; transition:border-color 0.2s ease; }
+      .testi-card:hover { border-color: var(--brand); }
     `}</style>
 
     <div className="section-label reveal">Client Stories</div>
     <h2
-      className="font-syne reveal reveal-delay-1"
+      className="font-display reveal reveal-delay-1"
       style={{
-        fontWeight: 800,
-        fontSize: "clamp(2rem,4vw,3.2rem)",
+        fontWeight: 600,
+        fontSize: "clamp(2rem,4vw,3rem)",
         lineHeight: 1.1,
-        letterSpacing: "-0.03em",
-        color: "#f0f0f8",
+        letterSpacing: "-0.02em",
+        color: "var(--ink)",
         marginBottom: "1rem",
       }}
     >
@@ -55,13 +51,7 @@ const Testimonials = () => (
     </h2>
     <p
       className="reveal reveal-delay-2"
-      style={{
-        color: "rgba(240,240,248,0.45)",
-        fontSize: "1.05rem",
-        lineHeight: 1.7,
-        maxWidth: 480,
-        marginBottom: "3rem",
-      }}
+      style={{ color: "var(--ink-soft)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 480, marginBottom: "3rem" }}
     >
       Real traction. Real growth. Real success.
     </p>
@@ -71,30 +61,22 @@ const Testimonials = () => (
         <div key={t.name} className={`testi-card reveal reveal-delay-${i}`}>
           {/* Big quote */}
           <div
+            className="font-display"
             style={{
               position: "absolute",
               top: 12,
-              right: 20,
-              fontFamily: "Georgia, serif",
+              right: 24,
               fontSize: "3.5rem",
               lineHeight: 1,
-              color: "#00e5ff",
-              opacity: 0.18,
+              color: "var(--brand-tint)",
               pointerEvents: "none",
               userSelect: "none",
             }}
           >
-            "
+            &rdquo;
           </div>
           {/* Stars */}
-          <div
-            style={{
-              color: "#00e5ff",
-              fontSize: "0.875rem",
-              marginBottom: "1rem",
-              letterSpacing: "0.05em",
-            }}
-          >
+          <div style={{ color: "var(--brand)", fontSize: "0.875rem", marginBottom: "1rem", letterSpacing: "0.05em" }}>
             ★★★★★
           </div>
           {/* Status Badge */}
@@ -104,69 +86,37 @@ const Testimonials = () => (
               alignItems: "center",
               gap: "0.4rem",
               padding: "0.3rem 0.8rem",
-              background: "rgba(0,229,255,0.1)",
-              border: "1px solid rgba(0,229,255,0.2)",
-              borderRadius: "50px",
+              background: "var(--brand-tint)",
+              borderRadius: "100px",
               marginBottom: "1rem",
             }}
           >
-            <span
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                color: "#00e5ff",
-              }}
-            >
+            <span style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--brand-dark)" }}>
               {t.status}
             </span>
           </div>
-          <p
-            style={{
-              color: "rgba(240,240,248,0.8)",
-              fontSize: "0.9rem",
-              lineHeight: 1.75,
-              marginBottom: "1.5rem",
-            }}
-          >
-            {t.text}
-          </p>
-          <div
-            style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
-          >
+          <p style={{ color: "var(--ink)", fontSize: "0.9rem", lineHeight: 1.75, marginBottom: "1.5rem" }}>{t.text}</p>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <div
               style={{
                 width: 40,
                 height: 40,
                 borderRadius: "50%",
-                background: "linear-gradient(135deg, #00e5ff, #00c8ff)",
+                background: "var(--brand)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontWeight: 700,
                 fontSize: "0.85rem",
-                color: "#020906",
+                color: "#fff",
                 flexShrink: 0,
               }}
             >
               {t.initials}
             </div>
             <div>
-              <div
-                style={{
-                  fontWeight: 600,
-                  fontSize: "0.9rem",
-                  color: "#f0f0f8",
-                }}
-              >
-                {t.name}
-              </div>
-              <div
-                style={{ color: "rgba(240,240,248,0.45)", fontSize: "0.78rem" }}
-              >
-                {t.role}
-              </div>
+              <div style={{ fontWeight: 600, fontSize: "0.9rem", color: "var(--ink)" }}>{t.name}</div>
+              <div style={{ color: "var(--ink-soft)", fontSize: "0.78rem" }}>{t.role}</div>
             </div>
           </div>
         </div>
