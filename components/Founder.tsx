@@ -56,7 +56,9 @@ const socials = [
 ];
 
 const FounderGallery = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: founderImages.length > 1 });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: founderImages.length > 1,
+  });
   const [selected, setSelected] = useState(0);
 
   const onSelect = useCallback(() => {
@@ -90,7 +92,14 @@ const FounderGallery = () => {
         </div>
       </div>
       {founderImages.length > 1 && (
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.9rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "0.4rem",
+            marginTop: "0.9rem",
+          }}
+        >
           {founderImages.map((_, i) => (
             <button
               key={i}
@@ -114,9 +123,12 @@ const FounderGallery = () => {
   );
 };
 
-
 const Founder = () => (
-  <section id="founder" className="bg-cream" style={{ padding: "6rem 5%", position: "relative" }}>
+  <section
+    id="founder"
+    className="bg-cream"
+    style={{ padding: "6rem 5%", position: "relative" }}
+  >
     <style>{`
       .founder-grid { display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:center; max-width:1100px; margin:0 auto; }
       @media(min-width:1024px){ .founder-grid { grid-template-columns:340px 1fr; gap:4rem; } }
@@ -164,11 +176,25 @@ const Founder = () => (
         >
           Ifeanyi Onyekwelu
         </h2>
-        <p style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "1.1rem", color: "var(--brand)" }}>
+        <p
+          style={{
+            fontSize: "1rem",
+            fontWeight: 600,
+            marginBottom: "1.1rem",
+            color: "var(--brand)",
+          }}
+        >
           Founder &amp; Lead Developer — Zephra Studio
         </p>
 
-        <p style={{ color: "var(--ink-soft)", lineHeight: 1.75, fontSize: "0.95rem", marginBottom: "1.25rem" }}>
+        <p
+          style={{
+            color: "var(--ink-soft)",
+            lineHeight: 1.75,
+            fontSize: "0.95rem",
+            marginBottom: "1.25rem",
+          }}
+        >
           Full-stack developer with 5 years building web and mobile products
           across fintech, edtech, and SaaS. Clients work directly with the
           founder, start to finish — no hand-offs to a junior dev after the
@@ -176,7 +202,14 @@ const Founder = () => (
         </p>
 
         {/* Expertise tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.5rem",
+            marginBottom: "1.5rem",
+          }}
+        >
           {expertise.map((tag) => (
             <span key={tag} className="expertise-chip">
               <BadgeCheck size={14} strokeWidth={2} color="var(--brand)" />
@@ -193,18 +226,86 @@ const Founder = () => (
             { value: "30+", label: "Happy Clients" },
           ].map((stat) => (
             <div key={stat.label} className="founder-stat">
-              <div className="font-display" style={{ fontSize: "1.6rem", fontWeight: 600, color: "var(--brand)", lineHeight: 1 }}>
+              <div
+                className="font-display"
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 600,
+                  color: "var(--brand)",
+                  lineHeight: 1,
+                }}
+              >
                 {stat.value}
               </div>
-              <div style={{ fontSize: "0.75rem", color: "var(--ink-soft)", marginTop: 4 }}>{stat.label}</div>
+              <div
+                style={{
+                  fontSize: "0.75rem",
+                  color: "var(--ink-soft)",
+                  marginTop: 4,
+                }}
+              >
+                {stat.label}
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Portfolio link */}
+        <div style={{ marginBottom: "1.5rem" }}>
+          <a
+            href="https://xife3.space"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "0.7rem 1.2rem",
+              background: "var(--brand)",
+              color: "#fff",
+              textDecoration: "none",
+              borderRadius: "100px",
+              fontSize: "0.9rem",
+              fontWeight: 600,
+              transition: "background 0.2s ease, transform 0.2s ease",
+              border: "1px solid var(--brand)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--brand-dark)";
+              e.currentTarget.style.borderColor = "var(--brand-dark)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "var(--brand)";
+              e.currentTarget.style.borderColor = "var(--brand)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            View Portfolio
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
         </div>
 
         {/* Social links */}
         <div style={{ display: "flex", gap: "0.65rem", flexWrap: "wrap" }}>
           {socials.map((s) => (
-            <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="founder-social" title={s.name}>
+            <a
+              key={s.name}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="founder-social"
+              title={s.name}
+            >
               {s.icon}
             </a>
           ))}

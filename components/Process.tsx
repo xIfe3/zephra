@@ -83,12 +83,11 @@ const Process = () => {
         .process-accordion.open { grid-template-rows: 1fr; }
         .process-accordion-inner { overflow: hidden; min-height: 0; }
         .process-panel-mobile {
-          border-radius: 12px;
-          border: 1px solid var(--line);
-          border-left: 3px solid var(--brand);
-          background: var(--paper);
-          padding: 1.1rem 1.25rem;
-          margin: 0 0.75rem 1.25rem;
+          border-radius: 0;
+          border: none;
+          background: transparent;
+          padding: 1.1rem 0.75rem;
+          margin: 0;
         }
         .process-panel-mobile-label {
           font-size: 0.68rem;
