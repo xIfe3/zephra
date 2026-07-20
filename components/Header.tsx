@@ -27,11 +27,11 @@ const Header = () => {
         alignItems: "center",
         justifyContent: "space-between",
         padding: scrolled ? "0.75rem 5%" : "1.25rem 5%",
-        background: "rgba(255,253,251,0.92)",
+        background: "#221E1B",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderBottom: scrolled
-          ? "1px solid var(--line)"
+          ? "1px solid rgba(255,255,255,0.15)"
           : "1px solid transparent",
         transition: "padding 0.2s ease, border-color 0.2s ease",
       }}
@@ -93,7 +93,7 @@ const Header = () => {
           style={{
             width: 24,
             height: 2,
-            background: "var(--ink)",
+            background: "#fff",
             borderRadius: 2,
             transition: "transform 0.2s",
             transform: menuOpen ? "rotate(45deg) translate(4px, 4px)" : "none",
@@ -103,7 +103,7 @@ const Header = () => {
           style={{
             width: 24,
             height: 2,
-            background: "var(--ink)",
+            background: "#fff",
             borderRadius: 2,
             transition: "opacity 0.2s",
             opacity: menuOpen ? 0 : 1,
@@ -113,7 +113,7 @@ const Header = () => {
           style={{
             width: 24,
             height: 2,
-            background: "var(--ink)",
+            background: "#fff",
             borderRadius: 2,
             transition: "transform 0.2s",
             transform: menuOpen
@@ -163,7 +163,7 @@ const Header = () => {
             className="nav-link"
             style={{
               fontSize: "1.15rem",
-              color: "var(--ink)",
+              color: "#fff",
               textDecoration: "none",
               padding: "0.6rem 0",
               borderBottom: "1px solid var(--line-soft)",

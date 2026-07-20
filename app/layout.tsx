@@ -6,9 +6,15 @@ export const metadata: Metadata = {
   title: "Zephra — Software Development Studio",
   description:
     "Zephra is a software development studio that builds fast, scalable web and mobile products for startups and businesses.",
+  manifest: "/site.webmanifest",
+  themeColor: "#ffffff",
   icons: {
-    icon: "/logo-z.png",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-96x96.png",
   },
 };
 
