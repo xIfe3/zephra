@@ -12,7 +12,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = ["Services", "Work", "About", "Contact"];
+  const links = ["Services", "Work", "Projects", "About", "Contact"];
 
   return (
     <nav
@@ -58,13 +58,17 @@ const Header = () => {
         className="hidden md:flex"
         style={{ gap: "2.25rem", listStyle: "none" }}
       >
-        {links.map((item) => (
-          <li key={item}>
-            <a href={`#${item.toLowerCase()}`} className="nav-link">
-              {item}
-            </a>
-          </li>
-        ))}
+        {links.map((item) => {
+          const href =
+            item === "Projects" ? "/projects" : `#${item.toLowerCase()}`;
+          return (
+            <li key={item}>
+              <a href={href} className="nav-link">
+                {item}
+              </a>
+            </li>
+          );
+        })}
       </ul>
 
       {/* CTA — hidden on mobile */}
@@ -156,23 +160,27 @@ const Header = () => {
           transition: "transform 0.25s ease",
         }}
       >
-        {links.map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            onClick={() => setMenuOpen(false)}
-            className="nav-link"
-            style={{
-              fontSize: "1.15rem",
-              color: "#fff",
-              textDecoration: "none",
-              padding: "0.6rem 0",
-              borderBottom: "1px solid var(--line-soft)",
-            }}
-          >
-            {item}
-          </a>
-        ))}
+        {links.map((item) => {
+          const href =
+            item === "Projects" ? "/projects" : `#${item.toLowerCase()}`;
+          return (
+            <a
+              key={item}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className="nav-link"
+              style={{
+                fontSize: "1.15rem",
+                color: "#fff",
+                textDecoration: "none",
+                padding: "0.6rem 0",
+                borderBottom: "1px solid var(--line-soft)",
+              }}
+            >
+              {item}
+            </a>
+          );
+        })}
         <a
           href="#contact"
           onClick={() => setMenuOpen(false)}

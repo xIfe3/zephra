@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import OfferSection from "@/components/OfferSection";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
-import Portfolio from "@/components/Portfolio";
+import ProjectsShowcase from "@/components/ProjectsShowcase";
 import Trust from "@/components/Trust";
 import WhyUs from "@/components/WhyUs";
 import Testimonials from "@/components/Testimonials";
@@ -31,8 +31,8 @@ const Agency = () => {
       {/* 3. Process — how we work */}
       <Process />
 
-      {/* 4. Portfolio — proof of work */}
-      <Portfolio />
+      {/* 4. Projects showcase — proof of work */}
+      <ProjectsShowcase limit={3} />
 
       {/* 5. Trust — stats & industry proof */}
       <Trust />
