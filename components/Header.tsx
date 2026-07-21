@@ -19,6 +19,7 @@ const Header = () => {
       id="navbar"
       style={{
         position: "fixed",
+        height: scrolled ? 80 : 100,
         top: 0,
         left: 0,
         right: 0,
@@ -26,14 +27,14 @@ const Header = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: scrolled ? "0.75rem 5%" : "1.25rem 5%",
+        padding: scrolled ? "0.1rem 5%" : "1.25rem 5%",
         background: "#221E1B",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderBottom: scrolled
           ? "1px solid rgba(255,255,255,0.15)"
           : "1px solid transparent",
-        transition: "padding 0.2s ease, border-color 0.2s ease",
+        transition: "all 0.2s ease",
       }}
     >
       {/* Logo */}
