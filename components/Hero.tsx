@@ -23,7 +23,9 @@ const Hero = () => {
   const yFront = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -260]);
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const [front, mid, back] = [projects[2], projects[0], projects[1]];
+  // Dark screenshots read best floating on the hero — pinned by slug so reordering case studies can't change it.
+  const bySlug = (slug: string) => projects.find((p) => p.slug === slug) ?? projects[0];
+  const [front, mid, back] = [bySlug("flowanalytics"), bySlug("x2factor"), bySlug("medibook")];
 
   return (
     <section ref={ref} id="top" className="relative overflow-hidden pt-36 pb-16 sm:pt-44">

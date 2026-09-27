@@ -24,7 +24,7 @@ const Studio = () => (
         <Reveal className="md:col-span-7 md:row-span-2">
           <PhotoSlot
             src="/photos/studio-team.jpg"
-            alt="The Zephra Studio team collaborating on a product build"
+            alt="A developer writing code at a dual-monitor setup in warm evening light"
             hint="The team, mid-build"
             className="aspect-[4/5] md:aspect-auto md:h-full md:min-h-[38rem]"
             sizes="(max-width: 768px) 100vw, 58vw"
@@ -50,7 +50,7 @@ const Studio = () => (
         <Reveal delay={0.18} className="md:col-span-5">
           <PhotoSlot
             src="/photos/studio-workspace.jpg"
-            alt="Inside the Zephra Studio workspace"
+            alt="A laptop and phone on a desk showing the BoxieAI app"
             hint="Our workspace"
             className="aspect-[16/10]"
             sizes="(max-width: 768px) 100vw, 42vw"

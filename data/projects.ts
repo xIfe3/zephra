@@ -20,50 +20,73 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    label: "Bill Payment Platform",
-    title: "PayZeph",
-    slug: "payzeph",
-    impact: "Shipped in 14 Days",
-    tech: ["Next.js", "NestJS", "TypeScript", "Turborepo", "Docker"],
+    label: "AI Email Assistant",
+    title: "BoxieAI",
+    slug: "boxieai",
+    impact: "3 AI actions on every email",
+    tech: ["Next.js", "NestJS", "OpenAI GPT-4o", "BullMQ", "Redis", "PostgreSQL", "Gmail API", "Paystack"],
     description:
-      "A fullstack monorepo bill payment app with shared UI components, automated testing, and Docker-based deployment.",
+      "An AI inbox that unifies multiple Gmail accounts and sorts every email into Urgent, Opportunity or Noise — with a short summary and a suggested reply for each.",
     fullDescription:
-      "PayZeph was designed as a high-trust payment experience for everyday Nigerians who wanted a simpler way to settle bills without friction. We built the platform end to end with a modern architecture that made it easy to ship fast while keeping quality high.",
+      "BoxieAI started from a simple frustration: important emails get buried across too many inboxes. We built an intelligence layer between the inbox and your attention — it connects several Gmail accounts through secure OAuth, pulls every message into one priority-sorted view, and runs each email through an AI pipeline that classifies it, summarises it and drafts a reply.",
     highlights: [
-      "Shared design system across web and admin experiences",
-      "Automated QA with Jest and Playwright",
-      "Containerized deployment with Docker and CI-friendly setup",
+      "Multi-account Gmail sync over OAuth 2.0, processed in background queues with BullMQ and Redis",
+      "GPT-4o pipeline that classifies, summarises and drafts a reply for every incoming email",
+      "Daily briefing, custom inbox rules and Paystack-powered subscription billing",
     ],
     outcome:
-      "The product launched quickly and gave the client a dependable foundation for scaling payments and future features.",
-    image: "/projects/payzeph.png",
-    accent: "#34d399",
+      "One dashboard instead of a handful of tabs: what needs action rises to the top, and replying takes seconds instead of reading every thread.",
+    image: "/projects/boxieai.png",
+    accent: "#f97352",
     format: "web",
-    live: "https://payzeph-zephra.vercel.app/",
-    github: "https://github.com/zephradev/payzeph",
+    live: "https://boxieai.zephra.dev",
+    github: "",
   },
   {
-    label: "Healthcare Booking",
-    title: "MediBook",
-    slug: "medibook",
-    impact: "2x Faster Than Industry Average",
-    tech: ["Next.js 14", "NestJS", "Prisma", "PostgreSQL", "Tailwind"],
+    label: "School Management SaaS",
+    title: "EduPro",
+    slug: "edupro",
+    impact: "Every school gets its own branded portal",
+    tech: ["Next.js", "NestJS", "PostgreSQL", "pgvector", "Claude AI", "Redis", "Paystack", "Flutterwave", "Termii SMS"],
     description:
-      "A doctor appointment platform with specialty search, real-time slot availability, JWT auth, and separate dashboards for patients and doctors.",
+      "A multi-tenant school operating system for Nigerian schools — branded dashboards, CBT exams, attendance, term results, fee billing and an AI study assistant.",
     fullDescription:
-      "MediBook addressed a real pain point in medical scheduling by making appointment discovery and booking feel much more intuitive. We combined a polished frontend with a secure backend so patients and clinicians could work within the same flow without confusion.",
+      "EduPro gives every Nigerian school its own branded platform on its own subdomain. Administrators, teachers and students each get a dashboard built around their daily work — marking attendance, setting and sitting computer-based exams, computing term results and report cards, and paying fees online — all backed by a single, secure multi-tenant system.",
     highlights: [
-      "Role-based patient and doctor dashboards",
-      "Live availability with intelligent slot filtering",
-      "Secure JWT authentication and protected routes",
+      "Multi-tenant architecture: every school gets its own branded subdomain with isolated data",
+      "CBT exams, question bank, timetables, term results and printable report cards with verification codes",
+      "“Bayo”, an AI study assistant grounded in school content (RAG on pgvector) that builds personalised study plans",
     ],
     outcome:
-      "The experience felt faster than most booking tools in the category, which helped improve trust and adoption from day one.",
-    image: "/projects/medibook.png",
-    accent: "#3b9dff",
+      "Schools replace paper registers, spreadsheets and manual result computation with one system — while fee receipts, SMS alerts and report cards go out automatically.",
+    image: "/projects/edupro.png",
+    accent: "#d9772b",
     format: "web",
-    live: "https://medibook-zephra.vercel.app/",
-    github: "https://github.com/zephradev/medibook",
+    live: "",
+    github: "",
+  },
+  {
+    label: "Bill Payment Wallet",
+    title: "Ziippa",
+    slug: "ziippa",
+    impact: "4 networks · 3 TV providers · 1 wallet",
+    tech: ["Next.js", "NestJS", "Drizzle ORM", "PostgreSQL", "Redis", "VTpass", "Flutterwave", "Turborepo"],
+    description:
+      "A wallet for everyday Nigerian bills — fund it once, then buy airtime and data, pay electricity and renew cable TV in a couple of taps, without touching a card again.",
+    fullDescription:
+      "Paying bills in Nigeria usually means a different app, a different card and a different failed transaction for each one. Ziippa puts them behind a single wallet: users fund it through Flutterwave, then top up airtime and data on MTN, Glo, Airtel and 9mobile, buy electricity tokens, and renew DStv, GOtv or StarTimes — all from one dashboard with a clear transaction history.",
+    highlights: [
+      "One wallet, funded via Flutterwave, that pays for airtime, data, electricity and cable TV",
+      "VTpass integration covering all four mobile networks, prepaid electricity and three TV providers",
+      "OTP-verified sign-up, JWT auth and a rate-limited, Redis-backed API",
+    ],
+    outcome:
+      "Recurring bills become a two-tap habit instead of a monthly chore — and every purchase lands in one clean transaction history.",
+    image: "/projects/ziippa.png",
+    accent: "#6d4aff",
+    format: "web",
+    live: "",
+    github: "",
   },
   {
     label: "SaaS Analytics Dashboard",
@@ -89,6 +112,75 @@ export const projects: Project[] = [
     github: "https://github.com/zephradev/flowanalytics",
   },
   {
+    label: "Task-Based Earning Platform",
+    title: "X2Factor",
+    slug: "x2factor",
+    impact: "Live, with a full audit trail on every payout",
+    tech: ["Next.js", "NestJS", "Drizzle ORM", "Neon Postgres", "Flutterwave", "AWS S3", "Resend", "Turborepo"],
+    description:
+      "A rewards platform where users complete tasks, refer friends and keep daily streaks — with every reward tracked in one wallet and paid out through Flutterwave.",
+    fullDescription:
+      "X2Factor pays real money, so trust mattered more than anything: every task, bonus and withdrawal had to be reviewed, recorded and explainable. We built a complete rewards economy — tasks with proof uploads, referral commissions, daily check-in streaks and subscription plans — around a single wallet with a clear transaction history.",
+    highlights: [
+      "Wallet ledger covering deposits, earnings, bonuses, referrals and withdrawals via Flutterwave",
+      "Admin console for task review, payouts, plans, support tickets, roles and a full audit log",
+      "Security-first API with rate limiting, hardened headers and verified payment webhooks",
+    ],
+    outcome:
+      "Money moving through the platform is fully traceable — users stay confident, and operators run everything from one admin console.",
+    image: "/projects/x2factor.png",
+    accent: "#14b8a6",
+    format: "web",
+    live: "https://x2factor.com",
+    github: "",
+  },
+  {
+    label: "School Website & Portal",
+    title: "Regina Nostra Schools",
+    slug: "regina-nostra",
+    impact: "Live school portal with online fee payments",
+    tech: ["React", "Vite", "Node.js", "Express", "MongoDB", "Paystack", "Cloudinary", "Tailwind"],
+    description:
+      "A website and school portal for Regina Nostra Schools in Enugu — admissions and announcements for parents, results and fee payments for students, and one dashboard for staff.",
+    fullDescription:
+      "Regina Nostra Schools needed more than a brochure site. We built their public website and a connected school portal: families find admissions information, the prospectus, fee structures and announcements in one place; students log in to see their results and pay fees; and administrators run the school's records from a single dashboard.",
+    highlights: [
+      "Public site with admissions, downloadable prospectus and application form, gallery, FAQ and announcements",
+      "Student portal for results, calendar and online fee payments through Paystack",
+      "Admin dashboard with bulk student upload from Excel/CSV, result publishing, payments and events",
+    ],
+    outcome:
+      "Admissions, results and fee collection moved online — less paperwork for staff, and one trusted place for parents and students to find what they need.",
+    image: "/projects/regina-nostra.png",
+    accent: "#2563eb",
+    format: "web",
+    live: "https://reginanostraschools.com",
+    github: "",
+  },
+  {
+    label: "Healthcare Booking",
+    title: "MediBook",
+    slug: "medibook",
+    impact: "2x Faster Than Industry Average",
+    tech: ["Next.js 14", "NestJS", "Prisma", "PostgreSQL", "Tailwind"],
+    description:
+      "A doctor appointment platform with specialty search, real-time slot availability, JWT auth, and separate dashboards for patients and doctors.",
+    fullDescription:
+      "MediBook addressed a real pain point in medical scheduling by making appointment discovery and booking feel much more intuitive. We combined a polished frontend with a secure backend so patients and clinicians could work within the same flow without confusion.",
+    highlights: [
+      "Role-based patient and doctor dashboards",
+      "Live availability with intelligent slot filtering",
+      "Secure JWT authentication and protected routes",
+    ],
+    outcome:
+      "The experience felt faster than most booking tools in the category, which helped improve trust and adoption from day one.",
+    image: "/projects/medibook.png",
+    accent: "#3b9dff",
+    format: "web",
+    live: "https://medibook-zephra.vercel.app/",
+    github: "https://github.com/zephradev/medibook",
+  },
+  {
     label: "Personal Finance Tracker",
     title: "Savvio",
     slug: "savvio",
@@ -110,36 +202,5 @@ export const projects: Project[] = [
     format: "web",
     live: "https://savvio-budgetting.vercel.app/",
     github: "https://github.com/xIfe3/savvio",
-  },
-  {
-    label: "Property Rental Platform",
-    title: "Letsten",
-    slug: "letsten",
-    impact: "Full Stack in Record Time",
-    tech: [
-      "Flutter",
-      "React",
-      "Flask",
-      "PostgreSQL",
-      "Stripe",
-      "SocketIO",
-      "Google Maps",
-    ],
-    description:
-      "A full-stack rental platform for the Nigerian housing market connecting tenants with landlords, including property verification and in-app payments.",
-    fullDescription:
-      "Letsten was built to solve a fragmented market experience where tenants and landlords often struggled to connect with trust and clarity. We shaped the product around secure discovery, communication, and transactions in one place.",
-    highlights: [
-      "Property verification and tenant screening flow",
-      "Real-time messaging and location-based search",
-      "In-app payments and lease management support",
-    ],
-    outcome:
-      "The product gives both sides of the market a stronger path to transact with confidence and less friction.",
-    image: "/projects/letsten.png",
-    accent: "#3b5bdb",
-    format: "mobile",
-    live: "",
-    github: "",
   },
 ];
