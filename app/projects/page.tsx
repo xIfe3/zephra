@@ -1,190 +1,70 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ProjectVisual from "@/components/ui/ProjectVisual";
+import { Reveal, SplitWords } from "@/components/motion/Reveal";
 import { projects } from "@/data/projects";
 
-const ProjectsPage = () => {
-  return (
-    <main className="bg-paper" style={{ minHeight: "100vh" }}>
-      <section style={{ padding: "7rem 5% 5rem" }}>
-        <div className="section-label">Selected Work</div>
-        <h1
-          className="font-display"
-          style={{
-            fontSize: "clamp(2.2rem, 4vw, 3.4rem)",
-            lineHeight: 1.08,
-            letterSpacing: "-0.02em",
-            color: "var(--ink)",
-            maxWidth: 780,
-            marginBottom: "1rem",
-          }}
-        >
-          Case studies shaped around real product problems.
-        </h1>
-        <p
-          style={{
-            color: "var(--ink-soft)",
-            fontSize: "1.04rem",
-            lineHeight: 1.85,
-            maxWidth: 730,
-            marginBottom: "3rem",
-          }}
-        >
-          Each story below shows the thinking behind the build, the product
-          decisions that mattered, and the measurable outcome we helped create.
-        </p>
-
-        <div style={{ display: "grid", gap: "1.5rem" }}>
-          {projects.map((project) => (
-            <article
-              key={project.title}
-              style={{
-                border: "1px solid var(--line)",
-                borderRadius: 24,
-                overflow: "hidden",
-                background: "linear-gradient(135deg, #fff 0%, #fcf7f1 100%)",
-                boxShadow: "0 20px 50px rgba(34, 30, 27, 0.05)",
-              }}
-            >
-              <div
-                style={{ display: "grid", gridTemplateColumns: "1fr", gap: 0 }}
-              >
-                <div
-                  style={{
-                    position: "relative",
-                    aspectRatio: "16 / 9",
-                    background: "var(--cream)",
-                  }}
-                >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "top center",
-                    }}
-                  />
-                </div>
-                <div style={{ padding: "2rem" }}>
-                  <div
-                    className="section-label"
-                    style={{ marginBottom: "0.75rem" }}
-                  >
-                    {project.label}
-                  </div>
-                  <h2
-                    className="font-display"
-                    style={{
-                      fontSize: "1.8rem",
-                      color: "var(--ink)",
-                      marginBottom: "0.75rem",
-                    }}
-                  >
-                    {project.title}
-                  </h2>
-                  <p
-                    style={{
-                      color: "var(--brand)",
-                      fontWeight: 700,
-                      marginBottom: "1rem",
-                    }}
-                  >
-                    {project.impact}
-                  </p>
-                  <p
-                    style={{
-                      color: "var(--ink-soft)",
-                      lineHeight: 1.85,
-                      marginBottom: "1rem",
-                    }}
-                  >
-                    {project.fullDescription}
-                  </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "0.45rem",
-                      marginBottom: "1rem",
-                    }}
-                  >
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        style={{
-                          padding: "0.3rem 0.7rem",
-                          borderRadius: 999,
-                          background: "rgba(138,78,41,0.08)",
-                          color: "var(--ink-soft)",
-                          fontSize: "0.78rem",
-                          border: "1px solid rgba(138,78,41,0.12)",
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div style={{ marginBottom: "1rem" }}>
-                    <h3
-                      style={{
-                        fontSize: "1rem",
-                        fontWeight: 700,
-                        marginBottom: "0.5rem",
-                        color: "var(--ink)",
-                      }}
-                    >
-                      Highlights
-                    </h3>
-                    <ul
-                      style={{
-                        paddingLeft: "1.2rem",
-                        color: "var(--ink-soft)",
-                        lineHeight: 1.8,
-                      }}
-                    >
-                      {project.highlights.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <p
-                    style={{
-                      color: "var(--ink)",
-                      fontWeight: 600,
-                      marginBottom: "1.5rem",
-                    }}
-                  >
-                    {project.outcome}
-                  </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "0.75rem",
-                    }}
-                  >
-                    <Link href="/contact" className="btn-primary">
-                      Start a similar project
-                    </Link>
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-ghost"
-                      >
-                        Live Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
-  );
+export const metadata: Metadata = {
+  title: "Case Studies — MVPs, SaaS & Mobile Apps We've Built",
+  description:
+    "Explore Zephra Studio case studies: fintech, healthcare, SaaS analytics, personal finance and PropTech products designed, built and launched for startup founders.",
+  alternates: { canonical: "/projects" },
+  openGraph: { url: "/projects" },
 };
 
-export default ProjectsPage;
+export default function ProjectsPage() {
+  return (
+    <>
+      <Header />
+      <main className="relative overflow-hidden">
+        <div aria-hidden className="orb -top-60 left-1/4 h-[40rem] w-[40rem] text-copper/20" />
+        <section className="wrap relative pt-40 pb-16 sm:pt-48">
+          <span className="eyebrow">Case studies</span>
+          <h1 className="display mt-8 max-w-[16ch] text-[clamp(3rem,8vw,7rem)] text-bone">
+            <SplitWords text="Real products, shaped around real problems." italicFrom={3} />
+          </h1>
+          <Reveal delay={0.3}>
+            <p className="lede mt-8 max-w-2xl">
+              Each story shows the thinking behind the build, the product decisions that mattered, and the outcome
+              we helped create.
+            </p>
+          </Reveal>
+        </section>
+
+        <section className="wrap relative grid gap-6 pb-32 md:grid-cols-2">
+          {projects.map((p, i) => (
+            <Reveal key={p.slug} delay={(i % 2) * 0.08} className={i === 0 ? "md:col-span-2" : ""}>
+              <Link
+                href={`/projects/${p.slug}`}
+                className="card spotlight group block h-full overflow-hidden !rounded-[32px] p-5 sm:p-7"
+              >
+                <div
+                  aria-hidden
+                  className="orb -top-40 -right-40 h-[26rem] w-[26rem] opacity-20 transition-opacity duration-700 group-hover:opacity-45"
+                  style={{ color: p.accent }}
+                />
+                <div className="relative transition-transform duration-1000 ease-out-expo group-hover:-translate-y-1.5">
+                  <ProjectVisual project={p} sizes={i === 0 ? "(max-width: 768px) 92vw, 80vw" : "(max-width: 768px) 92vw, 45vw"} priority={i === 0} />
+                </div>
+                <div className="relative mt-7 flex items-start justify-between gap-6 px-1">
+                  <div>
+                    <p className="font-mono text-[0.68rem] tracking-[0.16em] text-mute uppercase">{p.label}</p>
+                    <h2 className="mt-3 font-display text-[clamp(2rem,3.6vw,3rem)] leading-none text-bone">{p.title}</h2>
+                    <p className="mt-3 text-sm text-copper-2">{p.impact}</p>
+                  </div>
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 text-bone transition-all duration-500 group-hover:rotate-45 group-hover:border-copper group-hover:bg-copper group-hover:text-night">
+                    <ArrowUpRight size={18} />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}

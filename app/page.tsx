@@ -1,64 +1,44 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import OfferSection from "@/components/OfferSection";
+import Marquee from "@/components/Marquee";
+import Manifesto from "@/components/Manifesto";
+import Work from "@/components/Work";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
-import ProjectsShowcase from "@/components/ProjectsShowcase";
-import Trust from "@/components/Trust";
-import WhyUs from "@/components/WhyUs";
+import Proof from "@/components/Proof";
 import Testimonials from "@/components/Testimonials";
-import About from "@/components/About";
+import Studio from "@/components/Studio";
 import Founder from "@/components/Founder";
-import CtaBand from "@/components/CtaBand";
+import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
-const Agency = () => {
+export default function Home() {
   return (
-    <div>
-      {/* Fixed top navigation */}
+    <>
       <Header />
-
-      {/* 1. Hero — first impression, CTA above the fold */}
-      <Hero />
-
-      {/* 1.5. Offer Section — the 3-step journey */}
-      <OfferSection />
-
-      {/* 2. Services — what we offer */}
-      <Services />
-
-      {/* 3. Process — how we work */}
-      <Process />
-
-      {/* 4. Projects showcase — proof of work */}
-      <ProjectsShowcase limit={3} />
-
-      {/* 5. Trust — stats & industry proof */}
-      <Trust />
-
-      {/* 6. Why Us — trust signals */}
-      <WhyUs />
-
-      {/* 6. Testimonials — social proof */}
-      <Testimonials />
-
-      {/* 7. About — who we are */}
-      <About />
-
-      {/* 8. Founder — meet the person behind Zephra */}
-      <Founder />
-
-      {/* 9. CTA Band — conversion push before contact */}
-      <CtaBand />
-
-      {/* 9. Contact — the money page */}
-      <Contact />
-
-      {/* Footer */}
+      <main>
+        {/* 1. Hook — promise, proof, product screens */}
+        <Hero />
+        <Marquee />
+        {/* 2. Connect — why we exist */}
+        <Manifesto />
+        {/* 3. Show — the work speaks first */}
+        <Work />
+        {/* 4. Explain — what we do and how */}
+        <Services />
+        <Process />
+        {/* 5. Reassure — numbers, reasons, voices */}
+        <Proof />
+        <Testimonials />
+        {/* 6. Humanise — the people behind it */}
+        <Studio />
+        <Founder />
+        {/* 7. Remove doubt, then ask */}
+        <Faq />
+        <Contact />
+      </main>
       <Footer />
-    </div>
+    </>
   );
-};
-
-export default Agency;
+}

@@ -1,196 +1,138 @@
 "use client";
+
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
+import { nav, site } from "@/data/site";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      // Tuck the bar away while reading downwards, bring it back on any upward scroll.
+      setHidden(y > 400 && y > last);
+      last = y;
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = ["Services", "Work", "Projects", "About", "Contact"];
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <nav
-      id="navbar"
-      style={{
-        position: "fixed",
-        height: scrolled ? 80 : 100,
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: scrolled ? "0.1rem 5%" : "1.25rem 5%",
-        background: "#221E1B",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderBottom: scrolled
-          ? "1px solid rgba(255,255,255,0.15)"
-          : "1px solid transparent",
-        transition: "all 0.2s ease",
-      }}
-    >
-      {/* Logo */}
-      <a
-        href="#hero"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          textDecoration: "none",
-        }}
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-transform duration-700 ease-out-expo ${
+          hidden && !open ? "-translate-y-full" : "translate-y-0"
+        }`}
       >
-        <img
-          src="/logo.png"
-          alt="Zephra"
-          style={{ width: 150, height: "auto" }}
-        />
-      </a>
+        <div className="wrap pt-4">
+          <nav
+            aria-label="Main"
+            className={`flex h-16 items-center justify-between rounded-full border px-3 pl-5 transition-all duration-500 ${
+              scrolled
+                ? "border-white/10 bg-night/70 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl"
+                : "border-transparent bg-transparent"
+            }`}
+          >
+            <Link href="/" aria-label={`${site.name} — home`} className="flex items-center">
+              <Image src="/logo-wide.png" alt={site.name} width={700} height={162} priority className="h-8 w-auto sm:h-9" />
+            </Link>
 
-      {/* Nav links — hidden on mobile */}
-      <ul
-        className="hidden md:flex"
-        style={{ gap: "2.25rem", listStyle: "none" }}
-      >
-        {links.map((item) => {
-          const href =
-            item === "Projects" ? "/projects" : `#${item.toLowerCase()}`;
-          return (
-            <li key={item}>
-              <a href={href} className="nav-link">
-                {item}
+            <ul className="hidden items-center gap-1 md:flex">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="rounded-full px-4 py-2 text-[0.9rem] text-mute transition-colors hover:bg-white/[0.04] hover:text-bone"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex items-center gap-2">
+              <Link href="/#contact" className="btn btn-copper hidden !min-h-[44px] !py-2 !px-5 text-sm md:inline-flex">
+                Book a call
+                <ArrowUpRight size={16} />
+              </Link>
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                aria-label={open ? "Close menu" : "Open menu"}
+                className="relative z-[70] flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] md:hidden"
+              >
+                <span className="sr-only">Menu</span>
+                <span
+                  className={`absolute h-px w-5 bg-bone transition-transform duration-500 ${open ? "rotate-45" : "-translate-y-[4px]"}`}
+                />
+                <span
+                  className={`absolute h-px w-5 bg-bone transition-transform duration-500 ${open ? "-rotate-45" : "translate-y-[4px]"}`}
+                />
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            className="fixed inset-0 z-[45] flex flex-col bg-night/95 px-6 pt-32 pb-10 backdrop-blur-2xl md:hidden"
+            initial={{ clipPath: "circle(0% at 92% 6%)" }}
+            animate={{ clipPath: "circle(150% at 92% 6%)" }}
+            exit={{ clipPath: "circle(0% at 92% 6%)" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ul className="flex flex-col gap-1">
+              {nav.map((item, i) => (
+                <motion.li
+                  key={item.href}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-baseline gap-4 border-b border-white/[0.06] py-4 font-display text-[2.6rem] leading-none text-bone"
+                  >
+                    <span className="font-mono text-xs text-copper">0{i + 1}</span>
+                    {item.label}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+            <div className="mt-auto flex flex-col gap-3">
+              <Link href="/#contact" onClick={() => setOpen(false)} className="btn btn-copper w-full">
+                Book your free scope call <ArrowUpRight size={16} />
+              </Link>
+              <a href={`mailto:${site.email}`} className="text-center text-sm text-mute">
+                {site.email}
               </a>
-            </li>
-          );
-        })}
-      </ul>
-
-      {/* CTA — hidden on mobile */}
-      <a
-        href="#contact"
-        className="btn-primary hidden md:inline-flex"
-        style={{ padding: "0.65rem 1.5rem", fontSize: "0.9rem" }}
-      >
-        Book a Call
-      </a>
-
-      {/* Hamburger — visible on mobile only */}
-      <button
-        className="flex md:hidden flex-col"
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
-        style={{
-          background: "none",
-          border: "none",
-          gap: 5,
-          cursor: "pointer",
-          padding: 4,
-          zIndex: 110,
-        }}
-      >
-        <span
-          style={{
-            width: 24,
-            height: 2,
-            background: "#fff",
-            borderRadius: 2,
-            transition: "transform 0.2s",
-            transform: menuOpen ? "rotate(45deg) translate(4px, 4px)" : "none",
-          }}
-        />
-        <span
-          style={{
-            width: 24,
-            height: 2,
-            background: "#fff",
-            borderRadius: 2,
-            transition: "opacity 0.2s",
-            opacity: menuOpen ? 0 : 1,
-          }}
-        />
-        <span
-          style={{
-            width: 24,
-            height: 2,
-            background: "#fff",
-            borderRadius: 2,
-            transition: "transform 0.2s",
-            transform: menuOpen
-              ? "rotate(-45deg) translate(4px, -4px)"
-              : "none",
-          }}
-        />
-      </button>
-
-      {/* Mobile menu overlay */}
-      {menuOpen && (
-        <div
-          onClick={() => setMenuOpen(false)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(34,30,27,0.4)",
-            zIndex: 99,
-          }}
-        />
-      )}
-
-      {/* Mobile slide-in menu */}
-      <div
-        className="flex md:hidden flex-col"
-        style={{
-          position: "fixed",
-          top: 0,
-          right: 0,
-          width: "70%",
-          maxWidth: 300,
-          height: "100vh",
-          background: "var(--paper)",
-          borderLeft: "1px solid var(--line)",
-          zIndex: 105,
-          padding: "5rem 2rem 2rem",
-          gap: "1.5rem",
-          transform: menuOpen ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.25s ease",
-        }}
-      >
-        {links.map((item) => {
-          const href =
-            item === "Projects" ? "/projects" : `#${item.toLowerCase()}`;
-          return (
-            <a
-              key={item}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className="nav-link"
-              style={{
-                fontSize: "1.15rem",
-                color: "#fff",
-                textDecoration: "none",
-                padding: "0.6rem 0",
-                borderBottom: "1px solid var(--line-soft)",
-              }}
-            >
-              {item}
-            </a>
-          );
-        })}
-        <a
-          href="#contact"
-          onClick={() => setMenuOpen(false)}
-          className="btn-primary"
-          style={{ marginTop: "1rem", justifyContent: "center" }}
-        >
-          Book a Call
-        </a>
-      </div>
-    </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

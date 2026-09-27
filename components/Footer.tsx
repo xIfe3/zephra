@@ -1,110 +1,102 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { FaXTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa6";
+import { nav, site } from "@/data/site";
+import { projects } from "@/data/projects";
 
-import {
-  FaXTwitter,
-  FaLinkedinIn,
-  FaGithub,
-  FaInstagram,
-} from "react-icons/fa6";
+const socialIcons = { X: FaXTwitter, LinkedIn: FaLinkedinIn, GitHub: FaGithub, Instagram: FaInstagram } as const;
 
 const Footer = () => (
-  <footer className="bg-dark" style={{ padding: "3.5rem 5% 2rem" }}>
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-        gap: "2.5rem",
-        paddingBottom: "2.5rem",
-      }}
-    >
-      {/* Logo + tagline */}
-      <div style={{ maxWidth: 340 }}>
-        <img src="/logo.png" alt="Zephra" style={{ width: 140, height: "auto", marginBottom: "1rem" }} />
-        <p
-          className="font-display"
-          style={{
-            fontStyle: "italic",
-            fontSize: "1.05rem",
-            color: "var(--dark-text)",
-            lineHeight: 1.5,
-          }}
-        >
-          &ldquo;Building products founders are proud to ship.&rdquo;
-        </p>
+  <footer className="relative overflow-hidden border-t hairline pt-20">
+    <div className="wrap">
+      <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="max-w-sm">
+          <Image src="/logo-wide.png" alt={site.name} width={700} height={162} className="h-9 w-auto" />
+          <p className="mt-6 font-display text-2xl italic leading-snug text-bone">
+            Building products founders are proud to ship.
+          </p>
+          <Link href="/#contact" className="btn btn-copper mt-8">
+            Book a free scope call
+          </Link>
+        </div>
+
+        <nav aria-label="Footer">
+          <p className="font-mono text-[0.68rem] tracking-[0.16em] text-mute uppercase">Studio</p>
+          <ul className="mt-5 space-y-3">
+            {nav.map((n) => (
+              <li key={n.href}>
+                <Link href={n.href} className="link-underline text-bone/85 hover:text-bone">
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/#contact" className="link-underline text-bone/85 hover:text-bone">
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div>
+          <p className="font-mono text-[0.68rem] tracking-[0.16em] text-mute uppercase">Case studies</p>
+          <ul className="mt-5 space-y-3">
+            {projects.map((p) => (
+              <li key={p.slug}>
+                <Link href={`/projects/${p.slug}`} className="link-underline text-bone/85 hover:text-bone">
+                  {p.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="font-mono text-[0.68rem] tracking-[0.16em] text-mute uppercase">Say hello</p>
+          <ul className="mt-5 space-y-3 text-bone/85">
+            <li>
+              <a href={`mailto:${site.email}`} className="link-underline hover:text-bone">
+                {site.email}
+              </a>
+            </li>
+            <li>
+              <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer" className="link-underline hover:text-bone">
+                WhatsApp
+              </a>
+            </li>
+          </ul>
+          <div className="mt-6 flex gap-2">
+            {site.socials.map((s) => {
+              const Icon = socialIcons[s.name as keyof typeof socialIcons];
+              return (
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Zephra on ${s.name}`}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-mute transition-colors hover:border-copper hover:text-copper-2"
+                >
+                  <Icon size={16} />
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
-      {/* Links */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
-        {["Services", "Work", "About", "Contact"].map((link) => (
-          <a
-            key={link}
-            href={`#${link.toLowerCase()}`}
-            style={{
-              color: "var(--dark-text-soft)",
-              textDecoration: "none",
-              fontSize: "0.9rem",
-              transition: "color 0.2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--dark-text)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--dark-text-soft)")}
-          >
-            {link}
-          </a>
-        ))}
-      </div>
-
-      {/* Socials */}
-      <div style={{ display: "flex", gap: "0.75rem", height: "fit-content" }}>
-        {[
-          { icon: <FaXTwitter size={18} />, title: "X", href: "https://x.com/zephradev" },
-          { icon: <FaLinkedinIn size={18} />, title: "LinkedIn", href: "https://www.linkedin.com/company/zephradev" },
-          { icon: <FaGithub size={18} />, title: "GitHub", href: "https://github.com/zephradev" },
-          { icon: <FaInstagram size={18} />, title: "Instagram", href: "https://www.instagram.com/zephradev/" },
-        ].map((s) => (
-          <a
-            key={s.title}
-            href={s.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={s.title}
-            style={{
-              width: 38,
-              height: 38,
-              borderRadius: 8,
-              border: "1px solid var(--dark-line)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textDecoration: "none",
-              color: "var(--dark-text)",
-              transition: "border-color 0.2s ease",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "var(--brand-on-dark)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "var(--dark-line)")}
-          >
-            {s.icon}
-          </a>
-        ))}
+      <div className="mt-16 flex flex-col justify-between gap-3 border-t hairline py-8 text-sm text-dim sm:flex-row">
+        <p>© {new Date().getFullYear()} Zephra Studio. All rights reserved.</p>
+        <p>Designed &amp; built in Nigeria — for founders everywhere.</p>
       </div>
     </div>
 
-    {/* Bottom bar */}
-    <div
-      style={{
-        borderTop: "1px solid var(--dark-line)",
-        paddingTop: "1.5rem",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        gap: "0.75rem",
-        fontSize: "0.82rem",
-        color: "var(--dark-text-soft)",
-      }}
-    >
-      <span>© 2026 Zephra Studio — MVP Builders for Startups</span>
-      <span>Designed &amp; built in Nigeria</span>
+    {/* Solid fill + a gradient overlay: far cheaper to paint than background-clip:text at this size */}
+    <div aria-hidden className="pointer-events-none relative select-none">
+      <p className="-mb-[0.22em] text-center font-display text-[25vw] leading-none tracking-[-0.04em] text-copper/25">
+        Zephra
+      </p>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-night/60 to-night" />
     </div>
   </footer>
 );

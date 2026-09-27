@@ -1,18 +1,21 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { saveEnquiry } from "@/lib/supabase";
 
 function esc(s: string) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function buildEmailHtml(name: string, email: string, message: string, company?: string, service?: string) {
+function buildEmailHtml(name: string, email: string, message: string, company?: string, service?: string, budget?: string) {
   const escapedMessage = esc(message).replace(/\n/g, "<br/>");
   const escapedCompany = company ? esc(company) : "";
   const escapedService = service ? esc(service) : "";
+  const escapedBudget = budget ? esc(budget) : "";
 
   const extraRows = [
     escapedCompany && { label: "Company / Project", value: escapedCompany },
     escapedService && { label: "Service Needed", value: escapedService },
+    escapedBudget && { label: "Budget", value: escapedBudget },
   ].filter(Boolean) as { label: string; value: string }[];
 
   const extraHtml = extraRows
@@ -122,10 +125,27 @@ function buildEmailHtml(name: string, email: string, message: string, company?: 
 </html>`;
 }
 
+/** Instant phone ping via a Telegram bot. Never throws — a failed ping must not fail the enquiry. */
+async function notifyTelegram(text: string) {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) return;
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text, disable_web_page_preview: true }),
+    });
+    if (!res.ok) console.error("Telegram ping failed:", res.status, await res.text());
+  } catch (err) {
+    console.error("Telegram ping failed:", err);
+  }
+}
+
 export async function POST(req: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
-    const { name, email, message, company, service } = await req.json();
+    const { name, email, message, company, service, budget } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -134,17 +154,34 @@ export async function POST(req: Request) {
       );
     }
 
+    // Store first so the lead survives even if email delivery fails.
+    await saveEnquiry({ name, email, message, company, service, budget });
+
     const subject = company
       ? `New enquiry from ${name} — ${company}`
       : `New enquiry from ${name}`;
 
     await resend.emails.send({
       from: "Zephra Contact <contact@zephra.dev>",
-      to: "hello@zephra.dev",
+      to: process.env.CONTACT_TO_EMAIL || "hello@zephra.dev",
       replyTo: email,
       subject,
-      html: buildEmailHtml(name, email, message, company, service),
+      html: buildEmailHtml(name, email, message, company, service, budget),
     });
+
+    await notifyTelegram(
+      [
+        `📩 New Zephra enquiry`,
+        `From: ${name} <${email}>`,
+        company ? `Project: ${company}` : null,
+        service ? `Service: ${service}` : null,
+        budget ? `Budget: ${budget}` : null,
+        ``,
+        String(message).slice(0, 1500),
+      ]
+        .filter((line) => line !== null)
+        .join("\n"),
+    );
 
     return NextResponse.json({ success: true });
   } catch {

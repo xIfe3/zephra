@@ -1,315 +1,89 @@
-"use client";
-
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { BadgeCheck } from "lucide-react";
-
-// Add more photos here (e.g. "/founder-2.jpg") to turn this into a real gallery.
-const founderImages = ["/founder.jpeg"];
-
-const expertise = [
-  "Full-Stack Architecture",
-  "Fintech & Payments Systems",
-  "Technical Leadership",
-  "Product Strategy",
-  "AI / LLM Integration",
-];
+import { ArrowUpRight } from "lucide-react";
+import { FaXTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa6";
+import { Reveal } from "@/components/motion/Reveal";
+import { site } from "@/data/site";
 
 const socials = [
-  {
-    name: "Twitter / X",
-    url: "https://x.com/ifeanyicodes_",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-      </svg>
-    ),
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ifeanyichukwu-onyekwelu/",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/xIfe3",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-      </svg>
-    ),
-  },
-  {
-    name: "Instagram",
-    url: "https://instagram.com/tech__doctor",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-      </svg>
-    ),
-  },
+  { name: "X / Twitter", url: "https://x.com/ifeanyicodes_", Icon: FaXTwitter },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/ifeanyichukwu-onyekwelu/", Icon: FaLinkedinIn },
+  { name: "GitHub", url: "https://github.com/xIfe3", Icon: FaGithub },
+  { name: "Instagram", url: "https://instagram.com/tech__doctor", Icon: FaInstagram },
 ];
 
-const FounderGallery = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: founderImages.length > 1,
-  });
-  const [selected, setSelected] = useState(0);
-
-  const onSelect = useCallback(() => {
-    if (emblaApi) setSelected(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.on("select", onSelect);
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi, onSelect]);
-
-  return (
-    <div>
-      <div className="founder-img-wrap" ref={emblaRef}>
-        <div style={{ display: "flex", height: "100%" }}>
-          {founderImages.map((src, i) => (
-            <div key={src} style={{ flex: "0 0 100%", position: "relative" }}>
-              <Image
-                src={src}
-                alt={`Ifeanyi Onyekwelu — Founder of Zephra Studio${founderImages.length > 1 ? ` (${i + 1})` : ""}`}
-                fill
-                style={{ objectFit: "cover", objectPosition: "center top" }}
-                sizes="(max-width: 1024px) 100vw, 380px"
-                priority={i === 0}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-      {founderImages.length > 1 && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "0.4rem",
-            marginTop: "0.9rem",
-          }}
-        >
-          {founderImages.map((_, i) => (
-            <button
-              key={i}
-              aria-label={`Show photo ${i + 1}`}
-              onClick={() => emblaApi?.scrollTo(i)}
-              style={{
-                width: i === selected ? 18 : 7,
-                height: 7,
-                borderRadius: 4,
-                border: "none",
-                padding: 0,
-                background: i === selected ? "var(--brand)" : "var(--line)",
-                transition: "width 0.2s ease, background-color 0.2s ease",
-                cursor: "pointer",
-              }}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
+/** A personal note from the founder — the human handshake before the contact form. */
 const Founder = () => (
-  <section
-    id="founder"
-    className="bg-cream"
-    style={{ padding: "6rem 5%", position: "relative" }}
-  >
-    <style>{`
-      .founder-grid { display:grid; grid-template-columns:1fr; gap:2.5rem; align-items:center; max-width:1100px; margin:0 auto; }
-      @media(min-width:1024px){ .founder-grid { grid-template-columns:340px 1fr; gap:4rem; } }
-      .founder-img-wrap {
-        position:relative; width:100%; max-width:340px; aspect-ratio:3/4; border-radius:20px; overflow:hidden;
-        border:1px solid var(--line); margin:0 auto;
-      }
-      .founder-social {
-        display:inline-flex; align-items:center; justify-content:center;
-        width:40px; height:40px; border-radius:50%;
-        border:1px solid var(--line); color:var(--ink-soft);
-        transition:border-color 0.2s ease, color 0.2s ease;
-        text-decoration:none;
-      }
-      .founder-social:hover { border-color: var(--brand); color: var(--brand); }
-      .founder-stat { text-align:center; }
-      .founder-stats { display:flex; gap:1.75rem; flex-wrap:wrap; }
-      @media(max-width:1023px){ .founder-stats { justify-content:center; } }
-      .expertise-chip {
-        display:inline-flex; align-items:center; gap:0.4rem;
-        background:var(--paper); border:1px solid var(--line); border-radius:100px;
-        padding:0.35rem 0.85rem; font-size:0.78rem; font-weight:500; color:var(--ink);
-      }
-    `}</style>
-
-    <div className="founder-grid">
-      {/* Image column */}
-      <div className="reveal">
-        <FounderGallery />
-      </div>
-
-      {/* Text column */}
-      <div className="reveal reveal-delay-1">
-        <div className="section-label">Meet the Founder</div>
-        <h2
-          className="font-display"
-          style={{
-            fontWeight: 600,
-            fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
-            color: "var(--ink)",
-            marginBottom: "0.4rem",
-          }}
-        >
-          Ifeanyi Onyekwelu
-        </h2>
-        <p
-          style={{
-            fontSize: "1rem",
-            fontWeight: 600,
-            marginBottom: "1.1rem",
-            color: "var(--brand)",
-          }}
-        >
-          Founder &amp; Lead Developer — Zephra Studio
-        </p>
-
-        <p
-          style={{
-            color: "var(--ink-soft)",
-            lineHeight: 1.75,
-            fontSize: "0.95rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          Full-stack developer with 5 years building web and mobile products
-          across fintech, edtech, and SaaS. Clients work directly with the
-          founder, start to finish — no hand-offs to a junior dev after the
-          first call.
-        </p>
-
-        {/* Expertise tags */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.5rem",
-            marginBottom: "1.5rem",
-          }}
-        >
-          {expertise.map((tag) => (
-            <span key={tag} className="expertise-chip">
-              <BadgeCheck size={14} strokeWidth={2} color="var(--brand)" />
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Quick stats */}
-        <div className="founder-stats" style={{ marginBottom: "1.5rem" }}>
-          {[
-            { value: "5+", label: "Years Experience" },
-            { value: "60+", label: "Projects Delivered" },
-            { value: "30+", label: "Happy Clients" },
-          ].map((stat) => (
-            <div key={stat.label} className="founder-stat">
-              <div
-                className="font-display"
-                style={{
-                  fontSize: "1.6rem",
-                  fontWeight: 600,
-                  color: "var(--brand)",
-                  lineHeight: 1,
-                }}
-              >
-                {stat.value}
-              </div>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: "var(--ink-soft)",
-                  marginTop: 4,
-                }}
-              >
-                {stat.label}
-              </div>
+  <section id="founder" className="section overflow-hidden">
+    <div className="wrap grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+      <Reveal className="relative mx-auto w-full max-w-md lg:max-w-none">
+        <div aria-hidden className="orb -inset-20 -z-10 text-copper/35" />
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-white/10">
+          <Image
+            src="/founder.jpeg"
+            alt={`${site.founder.name}, founder of Zephra Studio`}
+            fill
+            sizes="(max-width: 1024px) 90vw, 40vw"
+            className="object-cover object-top"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-night via-night/40 to-transparent" />
+          <div className="absolute inset-x-6 bottom-6 flex items-end justify-between">
+            <div>
+              <p className="font-display text-3xl text-bone">{site.founder.name}</p>
+              <p className="text-sm text-mute">{site.founder.role}</p>
             </div>
-          ))}
+            <span className="chip !bg-night/80">5+ yrs building</span>
+          </div>
         </div>
+      </Reveal>
 
-        {/* Portfolio link */}
-        <div style={{ marginBottom: "1.5rem" }}>
-          <a
-            href="https://xife3.space"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              padding: "0.7rem 1.2rem",
-              background: "var(--brand)",
-              color: "#fff",
-              textDecoration: "none",
-              borderRadius: "100px",
-              fontSize: "0.9rem",
-              fontWeight: 600,
-              transition: "background 0.2s ease, transform 0.2s ease",
-              border: "1px solid var(--brand)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "var(--brand-dark)";
-              e.currentTarget.style.borderColor = "var(--brand-dark)";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "var(--brand)";
-              e.currentTarget.style.borderColor = "var(--brand)";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
-          >
-            View Portfolio
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-        </div>
-
-        {/* Social links */}
-        <div style={{ display: "flex", gap: "0.65rem", flexWrap: "wrap" }}>
-          {socials.map((s) => (
-            <a
-              key={s.name}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="founder-social"
-              title={s.name}
-            >
-              {s.icon}
+      <div>
+        <Reveal>
+          <span className="eyebrow">A note from the founder</span>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="mt-8 font-display text-[clamp(1.9rem,3.4vw,2.9rem)] leading-[1.15] text-bone">
+            &ldquo;When you work with Zephra, you work with <em className="text-gradient">me</em> — from the first
+            call to launch day and beyond.&rdquo;
+          </p>
+        </Reveal>
+        <Reveal delay={0.14}>
+          <div className="mt-8 space-y-4 text-mute">
+            <p>
+              I&apos;ve spent over five years building web and mobile products across fintech, edtech and SaaS. I
+              started Zephra because I kept meeting founders with great ideas who&apos;d been burned by slow,
+              vague, expensive development.
+            </p>
+            <p>
+              So we do it differently: a straight conversation, a fixed price, and a product in your hands in two
+              weeks. No hand-offs to a junior developer after the sales call. If I can&apos;t help you, I&apos;ll
+              tell you who can.
+            </p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <p className="mt-8 font-display text-4xl italic text-copper-2" aria-hidden>
+            Ifeanyi
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href={site.founder.portfolio} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+              Personal portfolio <ArrowUpRight size={16} />
             </a>
-          ))}
-        </div>
+            <div className="flex gap-2">
+              {socials.map(({ name, url, Icon }) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${site.founder.name} on ${name}`}
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-mute transition-colors hover:border-copper hover:text-copper-2"
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </div>
   </section>

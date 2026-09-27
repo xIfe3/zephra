@@ -10,6 +10,10 @@ export type Project = {
   outcome: string;
   image: string;
   galleryImages?: string[];
+  /** Brand colour of the product — tints its glow on cards and the case study. */
+  accent: string;
+  /** "web" screenshots get a browser frame; "mobile" mockups are shown as-is. */
+  format: "web" | "mobile";
   live: string;
   github: string;
 };
@@ -33,6 +37,8 @@ export const projects: Project[] = [
     outcome:
       "The product launched quickly and gave the client a dependable foundation for scaling payments and future features.",
     image: "/projects/payzeph.png",
+    accent: "#34d399",
+    format: "web",
     live: "https://payzeph-zephra.vercel.app/",
     github: "https://github.com/zephradev/payzeph",
   },
@@ -54,6 +60,8 @@ export const projects: Project[] = [
     outcome:
       "The experience felt faster than most booking tools in the category, which helped improve trust and adoption from day one.",
     image: "/projects/medibook.png",
+    accent: "#3b9dff",
+    format: "web",
     live: "https://medibook-zephra.vercel.app/",
     github: "https://github.com/zephradev/medibook",
   },
@@ -75,6 +83,8 @@ export const projects: Project[] = [
     outcome:
       "The dashboard moved from concept to launch-ready in a short window, giving the product team a strong first release without overbuilding.",
     image: "/projects/flowanalytics.png",
+    accent: "#a855f7",
+    format: "web",
     live: "https://flowanalytics-zephra.vercel.app/",
     github: "https://github.com/zephradev/flowanalytics",
   },
@@ -96,6 +106,8 @@ export const projects: Project[] = [
     outcome:
       "The final experience stayed focused, clear, and useful, which made it easier to align product decisions with the user journey.",
     image: "/projects/savvio.png",
+    accent: "#22c55e",
+    format: "web",
     live: "https://savvio-budgetting.vercel.app/",
     github: "https://github.com/xIfe3/savvio",
   },
@@ -125,6 +137,8 @@ export const projects: Project[] = [
     outcome:
       "The product gives both sides of the market a stronger path to transact with confidence and less friction.",
     image: "/projects/letsten.png",
+    accent: "#3b5bdb",
+    format: "mobile",
     live: "",
     github: "",
   },
